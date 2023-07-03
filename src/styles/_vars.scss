@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,900;1,300;1,700&display=swap');
+
+// Colour vars
+$color-primary: #003366;
+$color-secondary: #FF9933;
+$color-background: #F0F0F0;
+$color-highlight: #CC0000;
+
+// Typography vars
+$font-family:'Lato', sans-serif;
+$font-size-base: 16px;
+$font-color: #333333;
+
+// Devices sizes vars
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 992px;
+$breakpoint-large-desktop: 1200px;
+
+// Other global vars
+$spacing-unit: 8px;
+$border-radius: 4px;
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
