@@ -1,0 +1,7 @@
+@import '../../styles/vars';
+
+.header{
+    background-color:$color-secondary;
+    width: calc(100% - 200px);
+    margin-left: 200px;
+}

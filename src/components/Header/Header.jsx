@@ -1,7 +1,10 @@
+import './Header.scss'
+
 const Header = () => {
+  const currentPath = window.location.pathname;
   return (
-    <div>
-      This is we header
+    <div className="header">
+      <span>Dashboard</span> {currentPath}
     </div>
   )
 }
