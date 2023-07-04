@@ -1,0 +1,8 @@
+@import '../../styles/vars';
+
+.layout {
+    $breakpoint-large-desktop: 1200px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}

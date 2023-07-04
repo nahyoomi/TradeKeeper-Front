@@ -27,7 +27,7 @@
 <br>
 <hr>
 
-##screenshots
+## Screenshots
 
 ## Technologies Used
 <p>The Trade Keeper application is built using a combination of frontend and backend technologies.The frontend is developed with <b>React as the core framework</b>, providing a user-friendly web design.The application also includes a responsive mobile site using Sass as a preprocessor and implementing CSS and Material UI for enhanced styling.For seamless integration connecting various modules or functionalities of the trade keeping system with the backend data, the frontend utilizes React redux, useState, and react-router-dom, along with localStorage to persist management and tracking of commercial transactions. This ensures a smooth checkout process for users.</p>
