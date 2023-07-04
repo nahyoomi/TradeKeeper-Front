@@ -30,12 +30,11 @@
 ##screenshots
 
 ## Technologies Used
-<p>The application is user-friendly web design made with <b>React and Typescript as core</b>, highly-responsive mobile site with Sass as preprocessor and implementing CSS and Material UI, smooth sales channels integration with React usecontext, usestate, react-router-dom and localStorage to persist data between components and fast checkout process.</p>
+<p>The Trade Keeper application is built using a combination of frontend and backend technologies.The frontend is developed with <b>React as the core framework</b>, providing a user-friendly web design.The application also includes a responsive mobile site using Sass as a preprocessor and implementing CSS and Material UI for enhanced styling.For seamless integration connecting various modules or functionalities of the trade keeping system with the backend data, the frontend utilizes React redux, useState, and react-router-dom, along with localStorage to persist management and tracking of commercial transactions. This ensures a smooth checkout process for users.</p>
 
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [SASS](https://sass-lang.com/)
-- [NETLIFY](https://app.netlify.com/teams/nahyoomi/overview?_ga=2.84781081.1206755418.1652218935-61757142.1652218935)
 
 <br>
 <hr>

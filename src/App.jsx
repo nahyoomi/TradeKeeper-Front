@@ -1,11 +1,12 @@
 
-import './App.css'
+import './App.scss'
+import Dashboard from './components/Dashboard/Dashboard'
 
 function App() {
   return (
-    <>
-    <h1>Hello new project!!</h1>
-    </>
+    <div>
+      <Dashboard />
+    </div>
   )
 }
 
