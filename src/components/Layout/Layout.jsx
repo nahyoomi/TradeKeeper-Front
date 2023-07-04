@@ -1,8 +1,11 @@
-import React from 'react'
+import Header from '../Header/Header'
+import Navbar from '../Navbar/Navbar'
 
 export const Layout = ({children}) => {
   return (
     <div>
+      <Header/>
+      <Navbar/>
         <main>{children}</main>
     </div>
   )
