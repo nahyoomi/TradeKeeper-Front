@@ -1,14 +1,17 @@
+import PropTypes from 'prop-types';
 import Header from '../Header/Header'
-import Navbar from '../Navbar/Navbar'
 
 export const Layout = ({children}) => {
+  Layout.propTypes = {
+    children: PropTypes.node.isRequired
+  };
+
   return (
-    <div>
+    <div className='layout'>  
       <Header/>
-      <Navbar/>
         <main>{children}</main>
     </div>
   )
 }
 
-//Header, sidebar como nav con clic y renderize el children, installar axios, mostrar lista en dashboard
+//Header, sidebar como nav con clic y renderize el children, mostrar lista en dashboard
