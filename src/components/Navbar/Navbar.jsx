@@ -15,16 +15,16 @@ const Navbar = ({ setCurrentComponent }) => {
     <nav className="navbar">
       <ul className="navbar_list">
       <li className="navbar_item">
-          <button onClick={() => handleButtonClick('dashboard')}>Dashboard</button>
+          <button className="navbar_item_btn" onClick={() => handleButtonClick('dashboard')}>Dashboard</button>
         </li>
         <li className="navbar_item">
-          <button onClick={() => handleButtonClick('items')}>Items</button>
+          <button className="navbar_item_btn" onClick={() => handleButtonClick('items')}>Items</button>
         </li>
         <li className="navbar_item">
-          <button onClick={() => handleButtonClick('suppliers')}>Suppliers</button>
+          <button className="navbar_item_btn" onClick={() => handleButtonClick('suppliers')}>Suppliers</button>
         </li>
         <li className="navbar_item">
-          <button onClick={() => handleButtonClick('priceReductions')}>Price Reductions</button>
+          <button className="navbar_item_btn" onClick={() => handleButtonClick('priceReductions')}>Price Reductions</button>
         </li>
       </ul>
     </nav>
