@@ -1,12 +1,12 @@
 
 import './App.scss'
-import Dashboard from './components/Dashboard/Dashboard'
+import MainRoutes from './routes/MainRoutes'
 
 function App() {
   return (
-    <div>
-      <Dashboard />
-    </div>
+    <>
+      <MainRoutes/>
+    </>
   )
 }
 
