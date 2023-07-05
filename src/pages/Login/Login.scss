@@ -1,0 +1,88 @@
+@import '../../styles/vars';
+
+.login_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: $color-background;
+}
+
+.welcome{
+    background-color: #fff;
+    width: 350px;
+    padding: $spacing-unit * 6;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    text-align: center;
+
+    &_subtitle{
+        font-family: $font-family;
+        font-size: 24px;
+        color: $color-primary;
+        margin-bottom: $spacing-unit * 2;  
+    }
+}
+
+.form_group{
+    margin-bottom: $spacing-unit * 2;
+
+    &_label{
+        display: block;
+        font-family: $font-family;
+        font-size: $font-size-base;
+        color: $font-color;
+        margin-bottom: $spacing-unit;
+    }
+
+    &_input {
+        width: 100%;
+        padding: $spacing-unit;
+        border: 1px solid $color-primary;
+        border-radius: $border-radius;
+        font-family: $font-family;
+        font-size: $font-size-base;
+        color: $font-color; 
+    }
+}
+
+.login_button{
+    width: 100%;
+    padding: $spacing-unit * 2;
+    background-color: $color-primary;
+    color: #fff;
+    font-family: $font-family;
+    font-size: $font-size-base;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $color-secondary;
+      } 
+}
+
+.options{
+    margin-top: $spacing-unit * 2;
+    &_selection {
+      margin-bottom: $spacing-unit;
+    }
+}
+
+.back_btn{
+    margin-top: $spacing-unit;
+    padding: $spacing-unit * 2;
+    color: $color-primary;
+    font-family: $font-family;
+    font-size: $font-size-base;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      color: $color-secondary;
+    } 
+}
