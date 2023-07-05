@@ -10,11 +10,14 @@ export const createItem = async(data) =>{
 
 export const getItems = async() => {
     let URL =`${URL_MAIN}/item/items`;
-    console.log(URL, 'este es el URL resultado');
     let response = await axios.get(URL);
-    console.log(response, 'este es el response que entrega');
     return response;
 };
+
+export const getItemByCode = async(itemCode) => {
+    const response = await axios.get(`http://localhost:8080/item/${itemCode}`);
+    return response.data;
+}
 
 export const updateItem = async(data) => {
     let URL = `${URL_MAIN}/item/update`;
@@ -27,3 +30,5 @@ export const deactivateItem = async(data) => {
     let response = await axios.delete(URL, data);
     return response;
 }
+
+//e inprimes el result del servicio en console para ver si te trae la infor del item
