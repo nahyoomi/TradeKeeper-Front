@@ -1,17 +1,23 @@
 import './Login.scss';
+/* import { useForm } from "react-hook-form"; */
 
 const Login = () => {
+/*   const { register, handleSubmit, errors } = useForm();
+  const onSubmit = null;  */
+
   return (
     <div className='login_container'>
       <div className='welcome'>
         <h2 className='welcome_subtitle'>Welcome</h2>
-        <form>
+        <form /* onSubmit={handleSubmit(onSubmit)} */>
           <div className='form_group'>
-            <label className='form_group_label'>Username</label>
-            <input className='form_group_input' type='text' id='username'/>
+            <label className='form_group_label' name='username' /* ref={register({ required: true })} */>Username</label>
+           {/*  {errors.username && <span className='error_message'>Username is required</span>} */}
+            <input className='form_group_input' type='text' id='username' name='password' /* ref={register({ required: true })} *//>
           </div>
           <div className='form_group'>
             <label className='form_group_label'>Password</label>
+           {/*  {errors.password && <span className='error_message'>Password is required</span>} */}
             <input className='form_group_input'type='password' id='password' />
           </div>
           <button className='login_button' type='submit'>Login</button>
@@ -27,3 +33,5 @@ const Login = () => {
 }
 
 export default Login
+
+
