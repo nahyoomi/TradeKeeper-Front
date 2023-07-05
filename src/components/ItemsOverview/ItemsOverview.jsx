@@ -8,17 +8,17 @@ const ItemsOverview = () => {
 
   useEffect(() => {
     getItems().then((res) => {setItems(res.data)})
-  }, [items]);
+  }, []);
 
 
   return (
     <div className="items_container">
       {items.map((item) =>(
-        <ul key = {item.itemCode}>
-          <li>Image</li>
-          <li>Product ID: {item.itemCode}</li>
-          <li>Price: {item.price}</li>
-          <li>Creation Date : {item.creationDate}</li>
+        <ul className='items_list' key = {item.itemCode}>
+          <li className='items_list_item'>Image</li>
+          <li className='items_list_item'>Product ID: {item.itemCode}</li>
+          <li className='items_list_item'>Price: {item.price}</li>
+          <li className='items_list_item'>Creation Date : {item.creationDate}</li>
         </ul>
       ))}
     </div>

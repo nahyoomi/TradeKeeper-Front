@@ -10,7 +10,9 @@ export const createItem = async(data) =>{
 
 export const getItems = async() => {
     let URL =`${URL_MAIN}/item/items`;
+    console.log(URL, 'este es el URL resultado');
     let response = await axios.get(URL);
+    console.log(response, 'este es el response que entrega');
     return response;
 };
 
