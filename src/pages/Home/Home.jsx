@@ -1,28 +1,31 @@
-
-
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Dashboard from '../../components/Dashboard/Dashboard'
 import { Layout } from '../../components/Layout/Layout'
-import Navbar from '../../components/Navbar/Navbar'
 import './Home.scss'
 import SuppliersOverview from '../../components/SuppliersOverview/SuppliersOverview'
 import ItemsOverview from '../../components/ItemsOverview/ItemsOverview'
 import PriceReductionsOverview from '../../components/PriceReductionsOverview/PriceReductionsOverview'
+import ProductDetails from '../../components/ProductDetails/ProductDetails'
 
 export const Home = () => {
 
-  const [currentComponent, setCurrentComponent] = useState('dashboard');
+  const currentComponent = useSelector((state) => state.global.currentComponent);
+
+  const [selectedItemCode, setSelectedItemCode] = useState(null);
 
   const renderComponent = () => {
     switch (currentComponent) {
       case 'dashboard':
         return <Dashboard />;
       case 'items':
-        return <ItemsOverview />;
+        return <ItemsOverview setSelectedItemCode = {setSelectedItemCode}/>;
       case 'suppliers':
         return <SuppliersOverview />;
       case 'priceReductions':
         return <PriceReductionsOverview />;
+      case 'productDetails':
+        return <ProductDetails itemCode={selectedItemCode} />;
       default:
         return null;
     }
@@ -30,11 +33,8 @@ export const Home = () => {
 
   return (
     <Layout>
-      <div className='home_container'>
-        <div className='navbar_container'>
-          <Navbar  setCurrentComponent={setCurrentComponent}/>
-        </div>
-      <div className='dashboard_container'>
+      <div className='home-container'>
+      <div className='dashboard-container'>
         {renderComponent()}
       </div>
       </div>

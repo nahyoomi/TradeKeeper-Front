@@ -1,6 +1,6 @@
 @import '../../styles/vars';
 
-.landing_page {
+.landing-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,27 +8,27 @@
     height: 100vh;
     background-color: $color-background;
 
-    &_title{
+    &-title{
         font-family: $font-family;
         font-size: 2rem;
         color: $color-primary;
         margin-bottom: $spacing-unit * 2;
     }
 
-    &_image{
+    &-image{
 /*         width: 200px;
         height: auto;
         margin-top: $spacing-unit * 4; */
     }
 
-    &_resume{
+    &-resume{
         font-family: $font-family;
         font-size: $font-size-base;
         color: $font-color;
         margin-bottom: $spacing-unit;
     }
 
-    &_btn{
+    &-btn{
         position: absolute;
         top: $spacing-unit * 5;
         right: $spacing-unit * 5;
