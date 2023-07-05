@@ -13,5 +13,3 @@ export const Layout = ({children}) => {
     </div>
   )
 }
-
-//Header, sidebar como nav con clic y renderize el children, mostrar lista en dashboard
