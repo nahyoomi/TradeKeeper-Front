@@ -20,30 +20,30 @@ const ProductDetails = ({ itemCode }) => {
   }
   
   return (
-    <div className='card_container'>
+    <div className='card-container'>
       <div className='headset'>
-        <div className='headset_left'>
+        <div className='headset-left'>
           <button>Return</button>
         </div>
-        <div className='headset_right'></div>
+        <div className='headset-right'></div>
           <span>{itemCode}</span>
       </div>
-      <div className='card_content'>
-        <div className='card_content_tittle'>
+      <div className='card-content'>
+        <div className='card-content-tittle'>
           <h2>Type of Item</h2>
         </div>
         <div className='image'>
           <img  src='/' alt='item image'/>
         </div>
         <div className='price'>
-          <div className='color_square'></div>
+          <div className='color-square'></div>
           <span>{item.price}</span>
         </div>
         <div className='details'>
-          <div className='details_title'>
+          <div className='details-title'>
             <small>Clasification</small>
           </div>
-          <div className='product_details'>
+          <div className='product-details'>
             <p><span>Icon</span> Lorem ipsum dolor sit, amet consectetur adipi</p>
             <p><span>Icon</span> Lorem ipsum dolor sit, amet consectetur adipi</p>
           </div>

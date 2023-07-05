@@ -5,15 +5,15 @@
     background-color: $color-background;
     padding: $spacing-unit;
 
-    &_list{
+    &-list{
         list-style: none;
         padding: 0;
         margin: 0;   
     }
 
-    &_item{
+    &-item{
         margin-bottom: 10px;
-        &_btn{
+        &-btn{
             font-family: $font-family;
             font-size: $font-size-base;
             color: $font-color;

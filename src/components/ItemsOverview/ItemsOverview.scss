@@ -1,10 +1,10 @@
 @import '../../styles/vars';
 
-.items_container{
+.items-container{
     margin-left: 20px;
 }
 
-.items_list{
+.items-list{
     display: flex;
     align-items: center;
     list-style-type: none;
@@ -18,7 +18,7 @@
         color: white;
       }
 
-    &_item{
+    &-item{
         margin-right: $spacing-unit;
         padding: $spacing-unit;
 

@@ -1,6 +1,6 @@
 @import '../../styles/vars';
 
-.card_container{
+.card-container{
     background-color: $color-background;
     font-family: $font-family;
     font-size: $font-size-base;
@@ -16,7 +16,7 @@
     align-items: center;
     margin-bottom: $spacing-unit;
 
-    &_left button {
+    &-left button {
         background-color: transparent;
         border: none;
         color: $color-primary;
@@ -24,13 +24,13 @@
         cursor: pointer; 
     }
 
-    &_right span {
+    &-right span {
         color: $color-primary;
         font-size: $font-size-base;
     }
 }
 
-.card_content{
+.card-content{
     margin-bottom: $spacing-unit;
     &_tittle h2 {
         font-size: 24px;
@@ -49,7 +49,7 @@
     display: flex;
     align-items: center;
     margin-bottom: $spacing-unit; 
-    .color_square {
+    .color-square {
         width: 20px;
         height: 20px;
         background-color: $color-highlight;
@@ -62,7 +62,7 @@
 
 .details {
     margin-top: $spacing-unit;
-    &_title small{
+    &-title small{
         font-size: 12px;
     }
 }

@@ -30,5 +30,3 @@ export const deactivateItem = async(data) => {
     let response = await axios.delete(URL, data);
     return response;
 }
-
-//e inprimes el result del servicio en console para ver si te trae la infor del item

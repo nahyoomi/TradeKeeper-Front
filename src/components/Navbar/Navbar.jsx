@@ -1,50 +1,65 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import './Navbar.scss';
-import DropDown from '../DropDown/DropDown';
+import { useDispatch } from "react-redux";
+import { setCurrentComponent } from "../../redux/global/globalSlider";
+import PropTypes from "prop-types";
+import "./Navbar.scss";
 
-const Navbar = ({ setCurrentComponent }) => {
-  const [activeButton, setActiveButton] = useState('');
-  const [showDropdown, setShowDropdown] = useState(false);
+const Navbar = () => {
+  const dispatch = useDispatch();
 
   Navbar.propTypes = {
     setCurrentComponent: PropTypes.func.isRequired,
   };
-  
+
   const handleButtonClick = (componentName) => {
-    setActiveButton(componentName);
-    setCurrentComponent(componentName);
-  };
-
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
+    dispatch(setCurrentComponent(componentName));
   };
 
   return (
     <nav className="navbar">
-      <ul className="navbar_list">
-      <li className="navbar_item">
-          <button className="navbar_item_btn" onClick={() => handleButtonClick('dashboard')}>Dashboard</button>
+      <ul className="navbar-list">
+        <li className="navbar-item">
+          <button
+            className="navbar-item-btn"
+            onClick={() => handleButtonClick("dashboard")}
+          >
+            Dashboard
+          </button>
         </li>
-        <li className="navbar_item">
-          <button className={`navbar_item_btn ${activeButton === 'items' ? 'active' : ''}`} onClick={() => handleButtonClick('items')}>Items</button>
-          <button onClick={toggleDropdown}><span>X</span></button>
-          {showDropdown && ( <DropDown/>)}
+        <li className="navbar-item">
+          <button
+            className="navbar-item-btn"
+            onClick={() => handleButtonClick("items")}
+          >
+            Items
+          </button>
         </li>
-        <li className="navbar_item">
-        <button className={`navbar_item_btn ${activeButton === 'suppliers' ? 'active' : ''}`} onClick={toggleDropdown}>Suppliers</button>
-{/*         <button onClick={toggleDropdown}><span>X</span></button>
-          {showDropdown && ( <DropDown/>)} */}
+        <li className="navbar-item">
+          <button
+            className="navbar-item-btn"
+            onClick={() => handleButtonClick("createItem")}
+          >
+            Create Item
+          </button>
         </li>
-        <li className="navbar_item">
-        <button className={`navbar_item_btn ${activeButton === 'priceReductions' ? 'active' : ''}`} onClick={toggleDropdown}>Price Reductions</button>
-{/*         <button onClick={toggleDropdown}><span>X</span></button>
-          {showDropdown && ( <DropDown/>)} */}
+        <li className="navbar-item">
+          <button
+            className="navbar-item-btn"
+            onClick={() => handleButtonClick("suppliers")}
+          >
+            Suppliers
+          </button>
+        </li>
+        <li className="navbaritem">
+          <button
+            className="navbar-item-btn"
+            onClick={() => handleButtonClick("priceReductions")}
+          >
+            Price Reductions
+          </button>
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
