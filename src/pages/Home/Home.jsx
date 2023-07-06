@@ -35,7 +35,7 @@ export const Home = () => {
   };
 
   return (
-    <Layout>
+    <Layout currentComponent={currentComponent}>
       <div className='home-container'>
       <div className='dashboard-container'>
         {renderComponent()}
