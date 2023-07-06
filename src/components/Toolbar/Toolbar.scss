@@ -1,4 +1,16 @@
 .clearfix {
     display: flex;
     justify-content: space-between;
+
+    &-right {
+       &-btn {
+        background-color: green;
+        color: white;
+        letter-spacing: 2px;
+        border: none;
+        height: 30px;
+        padding: 5px;
+        cursor: pointer;
+       } 
+    }
 }

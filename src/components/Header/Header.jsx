@@ -1,11 +1,16 @@
 import './Header.scss'
 import PropTypes from 'prop-types';
+import { HiChevronRight } from "react-icons/hi";
 
 const Header = ({ currentComponent }) => {
   const currentPath = `/${currentComponent}`;
   return (
     <div className="header">
-      <span>Dashboard</span> {currentPath}
+      <div>
+        <span>Dashboard</span> 
+        <HiChevronRight/> 
+        {currentPath}
+      </div>
     </div>
   )
 }

@@ -1,33 +1,34 @@
 import './Login.scss';
-/* import { useForm } from "react-hook-form"; */
+import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import { BiError } from "react-icons/bi";
 
 const Login = () => {
-/*   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = null;  */
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data) => {
+    console.log(JSON.stringify(data));
+  };
+  let navigate = useNavigate();
 
   return (
     <div className='login-container'>
       <div className='welcome'>
         <h2 className='welcome-subtitle'>Welcome</h2>
-        <form /* onSubmit={handleSubmit(onSubmit)} */>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className='form-group'>
-            <label className='form-group-label' name='username' /* ref={register({ required: true })} */>Username</label>
-           {/*  {errors.username && <span className='error_message'>Username is required</span>} */}
-            <input className='form-group-input' type='text' id='username' name='password' /* ref={register({ required: true })} *//>
+            <label className='form-group-label'>Username</label>
+            <input className='form-group-input' type='text' {...register("username", { required: true })}/>
+            {errors.username && <p className="form-error"> <BiError/>Please check your username or password</p>}
           </div>
           <div className='form-group'>
             <label className='form-group-label'>Password</label>
-           {/*  {errors.password && <span className='error_message'>Password is required</span>} */}
-            <input className='form-group-input'type='password' id='password' />
+            <input className='form-group-input'type='password' {...register("password", { required: true, minLength: 8, pattern:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/  })} />
+            {errors.password && <p className="form-error"> <BiError/> Please check your username or password</p>}
           </div>
           <button className='login-button' type='submit'>Login</button>
-          <div className='options'>
-            <p className='options-selection'>Did you lose your password?</p>
-            <p className='options-selection'>You don´t have an account?</p>
-          </div>
         </form>
       </div>
-      <input type='button' value='Go Back' className='back-btn'/>
+      <input type='button' value='Go Back' className='back-btn' onClick={()=>{navigate('/')}}/>
     </div>
   )
 }
