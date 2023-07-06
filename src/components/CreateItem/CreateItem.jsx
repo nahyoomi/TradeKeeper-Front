@@ -8,22 +8,25 @@ export const CreateItem = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    createItem(JSON.stringify(data))
+    const newData = {
+      ...data,
+      price: parseInt(data.price),
+      itemCode: parseInt(data.itemCode),
+    };
+    console.log(newData, 'body enviando........');
+    createItem(data)
       .then((res) => {
-        console.log(res);
+        console.log(res, 'quien eres');
       })
       .catch((error) => {
         console.log("no se ha enviado el item ", error);
       });
   };
-  console.log(watch("example"));
-
+  
 
   return (
     <div className="create-item">
@@ -45,11 +48,11 @@ export const CreateItem = () => {
         <input  className="form-input" type="text" {...register("price", { required: true, pattern: /^[0-9]+(\.[0-9]+)?$/ })} />
         {errors.price && <p className="form-error"> <BiError/> Field required, please enter a valid number</p>}
 
-        <label className="form-label">Item´s state</label>
+{/*         <label className="form-label">Item´s state</label>
         <select className="form-select"{...register("state", { required: true })}>
           <option value="active">Active</option>
           <option value="deactive">Deactive</option>
-        </select>
+        </select> */}
 
         {/* <label className="form-label">Creation date : should be default</label>
         <input  type="date" className="form-input"{...register("creationDate", { required: true })} />
