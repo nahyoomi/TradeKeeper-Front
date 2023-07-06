@@ -51,9 +51,9 @@ export const CreateItem = () => {
           <option value="deactive">Deactive</option>
         </select>
 
-        <label className="form-label">Creation date : should be default</label>
+        {/* <label className="form-label">Creation date : should be default</label>
         <input  type="date" className="form-input"{...register("creationDate", { required: true })} />
-        {errors.creationDate && <p className="form-error"><BiError/> This field is required</p>}
+        {errors.creationDate && <p className="form-error"><BiError/> This field is required</p>} */}
 
         <input className="form-submit" type="submit" />
       </form>

@@ -1,15 +1,10 @@
 import { useDispatch } from "react-redux";
 import { setCurrentComponent } from "../../redux/global/globalSlider";
-import PropTypes from "prop-types";
 import "./Navbar.scss";
 import { HiOutlineViewGridAdd, HiArchive, HiPencilAlt, HiUsers, HiColorSwatch } from "react-icons/hi";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-
-  Navbar.propTypes = {
-    setCurrentComponent: PropTypes.func.isRequired,
-  };
 
   const handleButtonClick = (componentName) => {
     dispatch(setCurrentComponent(componentName));

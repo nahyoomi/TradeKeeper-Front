@@ -4,22 +4,61 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { getItemByCode } from '../../services/Services';
 import { deactivateItem } from '../../services/Services';
+import Swal from 'sweetalert';
+import { useDispatch  } from 'react-redux';
+import { setCurrentComponent } from '../../redux/global/globalSlider';
 
 const ProductDetails = ({ itemCode }) => {
-  const [item, setItem] = useState(null);
+  const dispatch = useDispatch();
+  const [changeStateItem, setChangeStateItem] = useState();
+  const [ item, setItem ] = useState(null);
 
-  ProductDetails.propTypes = {
-    itemCode: PropTypes.any.isRequired,
-  };
-
-  const handleDeactivate = async () => {
-    try {
-      const response = await deactivateItem(item);
-      console.log(response);
-      
-    } catch (error) {
-      console.log("Ocurrió un error al desactivar el ítem:", error);
+  useEffect(() => {
+    if (changeStateItem) {
+      Swal({
+        title: 'Item has been deactivated',
+        text: `Description: ${changeStateItem}`,
+        icon: 'success',
+      });
     }
+  }, [changeStateItem]);
+
+  const handleClick = () => {
+    Swal({
+      title: 'Deactivate Item',
+      content: {
+        element: 'input',
+        attributes: {
+          placeholder: 'Why do you want to change the state of item?',
+          type: 'text',
+        },
+      },
+      buttons: {
+        confirm: 'Deactivate',
+        cancel: 'Cancel',
+      },
+    }).then((value) => {
+      if (value) {
+        setChangeStateItem(value);
+        Swal({
+          title: 'Item has been deactivated',
+          text: `Description: ${changeStateItem}`,
+          icon: 'success',
+        });
+        const ArrayValue ={
+            "idItem": item.idItem ,
+            "reason": value
+        }
+        deactivateItem(ArrayValue)
+        .then((res) => {
+          console.log('Has been deactivated', res );
+          dispatch(setCurrentComponent('items'));
+        })
+        .catch((error) => {
+          console.log("no se ha enviado el item ", error);
+        });
+      }
+    });
   };
 
   useEffect(()=>{
@@ -59,9 +98,12 @@ const ProductDetails = ({ itemCode }) => {
           </div>
         </div>
       </div>
-      <button onClick={handleDeactivate}>Deactivate</button>
+      <button onClick={handleClick}>Deactivate</button>
     </div>
   )
 }
 
+ProductDetails.propTypes = {
+  itemCode: PropTypes.any.isRequired,
+};
 export default ProductDetails
