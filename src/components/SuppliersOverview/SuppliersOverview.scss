@@ -1,5 +1,37 @@
 @import '../../styles/vars';
 
-.suppliers {
+.suppliers-container{
     margin-left: 20px;
+
+}
+
+.table{
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        font-weight: bold;
+    }
+}
+.suppliers-list{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin-bottom: $spacing-unit;
+    border: 1px solid $color-primary;
+    border-radius: $border-radius;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    &:hover {
+        background-color: $color-primary;
+        color: white;
+      }
+
+    &-item{
+        margin-right: $spacing-unit;
+        padding: $spacing-unit;
+
+    }
+
 }

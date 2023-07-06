@@ -1,68 +1,60 @@
-/* import { useState } from 'react'; */
+
 import { useForm } from "react-hook-form";
-import { createItem } from '../../services/Services'
-import './CreateItem.scss'
+import { createItem } from "../../services/Services";
+import "./CreateItem.scss";
 
 export const CreateItem = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    
-    /* const [newItem, setNewItem] = useState({}); */
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-   /*  const onSubmit = (data, e) => {
-      e.preventDefault();
-      const newData = {
-        itemCode: data.itemCode,
-        description: data.description,
-        price: data.price,
-        state: data.state,
-        creationDate: data.creationDate,
-        userId: data.userId
-      }; */
-
-      
-    const onSubmit = data => {
-        console.log(data)
-        createItem(data).then((res) => {
-            console.log(res);
-        })
-        .catch((error) => { 
-            // Manejo de errores 
-            console.log("no se ha enviado el item ", error); 
-          });
-    };
-      console.log(watch("example"));
-/*       createItem(newData).then(() => {
-        setNewItem({});
-      }); */
-
+  const onSubmit = (data) => {
+    console.log(data);
+    createItem(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log("no se ha enviado el item ", error);
+      });
+  };
+  console.log(watch("example"));
 
   return (
     <div className="create-item">
-      <h1  className="create-item-title">Create Item</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <label>code</label>
-      <input {...register("itemCode", { required: true })} />
-      {errors.itemCode && <span>This field is required</span>}
+      <h1 className="create-item-title">Create Item</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="form">
+        <label className="form-label">Asign item code:</label>
+        <input className="form-input" type="number" {...register("itemCode", { required: true })} />
+        {errors.itemCode && <p className="form-error">Field required, please enter a valid code</p>}
 
-      <label>description</label>
-      <input {...register("description", { required: true })} />
-      {errors.description && <span>This field is required</span>}
+        <label className="form-label">Item´s description: </label>
+        <input 
+          className="form-input"
+          type="text"
+          {...register("description", { required: true, maxLength: 250 })}
+        />
+        {errors.description && <p className="form-error">This field is required</p>}
 
-      <label>price</label>
-      <input {...register("price", { required: true })} />
-      {errors.price && <span>This field is required</span>}
+        <label className="form-label">Add price:</label>
+        <input  className="form-input" type="text" {...register("price", { required: true, pattern: /^[0-9]+(\.[0-9]+)?$/ })} />
+        {errors.price && <p className="form-error">Field required, please enter a valid number</p>}
 
-      <label>state</label>
-      <input {...register("state", { required: true })} />
-      {errors.state && <span>This field is required</span>}
+        <label className="form-label">Item´s state</label>
+        <select className="form-select"{...register("state", { required: true })}>
+          <option value="active">Active</option>
+          <option value="deactive">Deactive</option>
+        </select>
 
-      <label>creationDate</label>
-      <input {...register("creationDate", { required: true })} />
-      {errors.creationDate && <span>This field is required</span>}
+        <label className="form-label">Creation date : should be default</label>
+        <input  type="date" className="form-input"{...register("creationDate", { required: true })} />
+        {errors.creationDate && <p className="form-error">This field is required</p>}
 
-      <input type="submit" />
-    </form>
+        <input className="form-submit" type="submit" />
+      </form>
     </div>
-  )
-}
+  );
+};

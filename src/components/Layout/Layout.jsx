@@ -13,7 +13,7 @@ export const Layout = ({children}) => {
       <Header/>
       <div className='layout-content'>
           <Navbar />
-          <main>{children}</main>
+          <main className='layout-content-container'>{children}</main>
       </div>
     </div>
   )

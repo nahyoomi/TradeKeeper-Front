@@ -4,6 +4,7 @@ import { getItems } from '../../services/Services';
 import { useDispatch  } from 'react-redux';
 import { setCurrentComponent } from '../../redux/global/globalSlider';
 import PropTypes from 'prop-types';
+import Toolbar from '../Toolbar/Toolbar';
 
 
 const ItemsOverview = ({setSelectedItemCode}) => {
@@ -33,14 +34,23 @@ const ItemsOverview = ({setSelectedItemCode}) => {
   }
 
   return (
-    <div>
-        <div className="items-container">
+    <div className='items-container'>
+      <Toolbar/>
+        <div className="table">
+            <ul className='table-header'>
+              <li className='table-header-item'>Item Code</li>
+              <li className='table-header-item'>Price</li>
+              <li className='table-header-item'>State</li>
+              <li className='table-header-item'>Creation Date</li>
+              <li className='table-header-item'>Created</li>
+            </ul>
           {items.map((item) => (
             <ul className='items-list' key={item.itemCode} onClick={() => handleClick(item.itemCode)}>
-              <li className='items-list-item'>Image</li>
-              <li className='items-list-item'>Product ID: {item.itemCode}</li>
-              <li className='items-list-item'>Price: {item.price}</li>
-              <li className='items-list-item'>Creation Date: {item.creationDate}</li>
+              <li className='items-list-item'>{item.itemCode}</li>
+              <li className='items-list-item'>{item.price}</li>
+              <li className='items-list-item'>{item.state}</li>
+              <li className='items-list-item'>{item.creationDate}</li>
+              <li className='items-list-item'>{item.userId}</li>
             </ul>
           ))}
         </div>

@@ -2,6 +2,7 @@ import axios from "axios";
 
 let URL_MAIN = "http://localhost:8080";
 
+//Related to Item
 export const createItem = async(data) =>{
     let URL =`${URL_MAIN}/item`;
     let response = await axios.post(URL, data);
@@ -30,3 +31,17 @@ export const deactivateItem = async(data) => {
     let response = await axios.delete(URL, data);
     return response;
 }
+
+//Related to Supplier
+
+export const createSupplier = async(data) =>{
+    let URL =`${URL_MAIN}/supplier`;
+    let response = await axios.post(URL, data);
+    return response;
+};
+
+export const getSuppliers = async() => {
+    let URL =`${URL_MAIN}/supplier/suppliers`;
+    let response = await axios.get(URL);
+    return response;
+};

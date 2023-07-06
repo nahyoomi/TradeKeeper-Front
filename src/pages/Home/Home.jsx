@@ -22,7 +22,7 @@ export const Home = () => {
       case 'items':
         return <ItemsOverview setSelectedItemCode = {setSelectedItemCode}/>;
       case 'suppliers':
-        return <SuppliersOverview />;
+        return <SuppliersOverview setSelectedItemCode = {setSelectedItemCode}/>;
       case 'priceReductions':
         return <PriceReductionsOverview />;
       case 'productDetails':

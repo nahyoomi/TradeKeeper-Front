@@ -2,8 +2,18 @@
 
 .items-container{
     margin-left: 20px;
+
 }
 
+.table{
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        font-weight: bold;
+    }
+}
 .items-list{
     display: flex;
     align-items: center;
