@@ -3,12 +3,23 @@ import './ProductDetails.scss'
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { getItemByCode } from '../../services/Services';
+import { deactivateItem } from '../../services/Services';
 
 const ProductDetails = ({ itemCode }) => {
   const [item, setItem] = useState(null);
 
   ProductDetails.propTypes = {
     itemCode: PropTypes.any.isRequired,
+  };
+
+  const handleDeactivate = async () => {
+    try {
+      const response = await deactivateItem(item);
+      console.log(response);
+      
+    } catch (error) {
+      console.log("Ocurrió un error al desactivar el ítem:", error);
+    }
   };
 
   useEffect(()=>{
@@ -37,28 +48,20 @@ const ProductDetails = ({ itemCode }) => {
         </div>
         <div className='price'>
           <div className='color-square'></div>
-          <span>{item.price}</span>
+          <span> $ {item.price}</span>
         </div>
         <div className='details'>
           <div className='details-title'>
-            <small>Clasification</small>
+            <small>{item.creationDate}</small>
           </div>
           <div className='product-details'>
-            <p><span>Icon</span> Lorem ipsum dolor sit, amet consectetur adipi</p>
-            <p><span>Icon</span> Lorem ipsum dolor sit, amet consectetur adipi</p>
+            <p><span>Icon</span>{item.description}</p>
           </div>
         </div>
       </div>
+      <button onClick={handleDeactivate}>Deactivate</button>
     </div>
   )
 }
 
 export default ProductDetails
-
-/* "idItem": 1,
-"itemCode": 1001,
-"description": "Descripción del item 1",
-"price": 10.99,
-"state": "Active",
-"creationDate": "2023-01-01T00:00:00.000+00:00",
-"userId": "user1", */

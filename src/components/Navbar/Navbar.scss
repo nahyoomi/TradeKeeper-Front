@@ -4,6 +4,10 @@
     width: 225px;
     background-color: $color-background;
     padding: $spacing-unit;
+/*     position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; */
 
     &-list{
         list-style: none;

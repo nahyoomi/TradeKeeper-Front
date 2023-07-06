@@ -16,9 +16,9 @@
     }
 
     &-image{
-/*         width: 200px;
+        width: 500px;
         height: auto;
-        margin-top: $spacing-unit * 4; */
+        margin-top: $spacing-unit * 4;
     }
 
     &-resume{
@@ -47,5 +47,12 @@
             background-color: $color-highlight;
           }
     }
+  }
+
+  .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 800px;
   }
   

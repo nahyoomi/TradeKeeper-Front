@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentComponent } from "../../redux/global/globalSlider";
 import PropTypes from "prop-types";
 import "./Navbar.scss";
+import { HiOutlineViewGridAdd, HiArchive, HiPencilAlt, HiUsers, HiColorSwatch } from "react-icons/hi";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Navbar = () => {
             className="navbar-item-btn"
             onClick={() => handleButtonClick("dashboard")}
           >
-            Dashboard
+            <HiOutlineViewGridAdd/> Dashboard
           </button>
         </li>
         <li className="navbar-item">
@@ -30,7 +31,7 @@ const Navbar = () => {
             className="navbar-item-btn"
             onClick={() => handleButtonClick("items")}
           >
-            Items
+           <HiArchive/> Items
           </button>
         </li>
         <li className="navbar-item">
@@ -38,7 +39,7 @@ const Navbar = () => {
             className="navbar-item-btn"
             onClick={() => handleButtonClick("createItem")}
           >
-            Create Item
+           <HiPencilAlt/> Create Item
           </button>
         </li>
         <li className="navbar-item">
@@ -46,7 +47,7 @@ const Navbar = () => {
             className="navbar-item-btn"
             onClick={() => handleButtonClick("suppliers")}
           >
-            Suppliers
+           <HiUsers/> Suppliers
           </button>
         </li>
         <li className="navbaritem">
@@ -54,7 +55,7 @@ const Navbar = () => {
             className="navbar-item-btn"
             onClick={() => handleButtonClick("priceReductions")}
           >
-            Price Reductions
+           <HiColorSwatch/> Price Reductions
           </button>
         </li>
       </ul>
