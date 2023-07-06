@@ -28,6 +28,7 @@ export const updateItem = async(data) => {
 
 export const deactivateItem = async(data) => {
     let URL = `${URL_MAIN}/item/remove`;
+    console.log(data, URL, 'esta es el body del delete');
     let response = await axios.delete(URL, data);
     return response;
 }
