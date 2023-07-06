@@ -3,11 +3,17 @@ import axios from "axios";
 let URL_MAIN = "http://localhost:8080";
 
 //Related to Item
-export const createItem = async(data) =>{
-    let URL =`${URL_MAIN}/item`;
-    let response = await axios.post(URL, data);
+export const createItem = async (data) => {
+    let URL = `${URL_MAIN}/item`;
+    let response = await axios.post(URL, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept-Language': 'es',
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
     return response;
-};
+  };
 
 export const getItems = async() => {
     let URL =`${URL_MAIN}/item/items`;
