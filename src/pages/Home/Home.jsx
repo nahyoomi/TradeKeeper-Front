@@ -7,6 +7,7 @@ import SuppliersOverview from '../../components/SuppliersOverview/SuppliersOverv
 import ItemsOverview from '../../components/ItemsOverview/ItemsOverview'
 import PriceReductionsOverview from '../../components/PriceReductionsOverview/PriceReductionsOverview'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
+import { CreateItem } from '../../components/CreateItem/CreateItem'
 
 export const Home = () => {
 
@@ -26,6 +27,8 @@ export const Home = () => {
         return <PriceReductionsOverview />;
       case 'productDetails':
         return <ProductDetails itemCode={selectedItemCode} />;
+        case 'createItem':
+          return <CreateItem />;
       default:
         return null;
     }
