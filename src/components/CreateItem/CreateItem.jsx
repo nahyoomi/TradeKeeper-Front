@@ -47,17 +47,6 @@ export const CreateItem = () => {
         <label className="form-label">Add price:</label>
         <input  className="form-input" type="text" {...register("price", { required: true, pattern: /^[0-9]+(\.[0-9]+)?$/ })} />
         {errors.price && <p className="form-error"> <BiError/> Field required, please enter a valid number</p>}
-
-{/*         <label className="form-label">Item´s state</label>
-        <select className="form-select"{...register("state", { required: true })}>
-          <option value="active">Active</option>
-          <option value="deactive">Deactive</option>
-        </select> */}
-
-        {/* <label className="form-label">Creation date : should be default</label>
-        <input  type="date" className="form-input"{...register("creationDate", { required: true })} />
-        {errors.creationDate && <p className="form-error"><BiError/> This field is required</p>} */}
-
         <input className="form-submit" type="submit" />
       </form>
     </div>

@@ -1,13 +1,13 @@
 @import '../../styles/vars';
 
-.header{
-    background-color:$color-secondary;
-    width: calc(100% - 200px);
+.heading{
+    background-color:$color-primary;
+    /* width: calc(100% - 200px); */
     height: 40px;
     border-radius: $border-radius;
     font-size: 24px;
     margin-left: 200px;
     font-family: $font-family;
-    color: $font-color;
+    color: #ffffff;
 
 }

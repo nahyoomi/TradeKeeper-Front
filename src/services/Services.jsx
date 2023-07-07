@@ -52,3 +52,11 @@ export const getSuppliers = async() => {
     let response = await axios.get(URL);
     return response;
 };
+
+//Related to price reductions 
+
+export const getPriceReductions = async() => {
+    let URL =`${URL_MAIN}/supplier/suppliers`;
+    let response = await axios.get(URL);
+    return response;
+};

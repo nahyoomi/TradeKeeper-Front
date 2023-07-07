@@ -5,7 +5,7 @@ import { HiChevronRight } from "react-icons/hi";
 const Header = ({ currentComponent }) => {
   const currentPath = `/${currentComponent}`;
   return (
-    <div className="header">
+    <div className="heading">
       <div>
         <span>Dashboard</span> 
         <HiChevronRight/> 

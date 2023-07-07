@@ -1,37 +1,97 @@
 @import '../../styles/vars';
 
-.items-container{
-    margin-left: 20px;
+ .crud-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
 
-}
+  .header {
+    /* background-color: $color-primary; */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   /*  width: 100%; */
+    padding: 20px;
+  }
 
-.table{
+  .search-bar {
+    width: 300px;
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .create-button {
+    padding: 10px 20px;
+    background-color: #19c24c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+
     &-header {
         display: flex;
         justify-content: space-between;
-        list-style: none;
-        padding: 0;
+        align-items: center;
+        background-color: #f2f2f2;
+        padding: 10px;
         font-weight: bold;
-    }
-}
-.items-list{
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    margin-bottom: $spacing-unit;
-    border: 1px solid $color-primary;
-    border-radius: $border-radius;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    &:hover {
-        background-color: $color-primary;
-        color: white;
+
+        &-item {
+            flex: 1;
+            text-align: center;
+            list-style: none;
+          }
       }
 
-    &-item{
-        margin-right: $spacing-unit;
-        padding: $spacing-unit;
+      .items-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+/*         background-color: #ffffff;
+        border-bottom: 1px solid #ccc; */
+        padding: 10px;
+        list-style: none;
 
-    }
+        /* margin-bottom: 10px; */
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       /*  color: white; */
+       cursor: pointer;
+        transition: transform 0.3s ease;
 
-}
+        &-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        &-item button {
+            padding: 5px 10px;
+            margin-right: 5px;
+            background-color: #2196f3;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        &-item button:last-child {
+            background-color:  #f44336;
+          }
+      }
+
+      .items-list:hover {
+        transform: scale(1.2);
+      }
+  }
+

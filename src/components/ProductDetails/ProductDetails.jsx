@@ -69,37 +69,28 @@ const ProductDetails = ({ itemCode }) => {
     return <p>This {itemCode} is not related to any items</p>;
   }
   
-  return (
-    <div className='card-container'>
-      <div className='headset'>
-        <div className='headset-left'>
-          <button>Return</button>
-        </div>
-        <div className='headset-right'></div>
-          <span>{itemCode}</span>
+  return ( 
+    <div className="card">
+      <div className="card-header">
+        <img src="/" alt="Imagen"  className="card-image"/>
+        <div className="card-item-code">{itemCode}</div>
       </div>
-      <div className='card-content'>
-        <div className='card-content-tittle'>
-          <h2>Type of Item</h2>
-        </div>
-        <div className='image'>
-          <img  src='/' alt='item image'/>
-        </div>
-        <div className='price'>
-          <div className='color-square'></div>
-          <span> $ {item.price}</span>
-        </div>
-        <div className='details'>
-          <div className='details-title'>
-            <small>{item.creationDate}</small>
-          </div>
-          <div className='product-details'>
-            <p><span>Icon</span>{item.description}</p>
-          </div>
+      <div className="card-body">
+        <div className="card-small-text">{item.creationDate}</div>
+        <h2 className="card-title">This is title</h2>
+        <p  className="card-description">{item.description}</p>
+        <div className="card-info">
+          <div className="card-price">$ {item.price}</div>
+          <div className="card-state">{item.state}</div>
+          <div className="card-created-by">{item.userId}</div>
         </div>
       </div>
-      <button onClick={handleClick}>Deactivate</button>
-    </div>
+      <div className="card-buttons">
+        <button className="edit-button">Edit</button>
+        <button className="back-button">Return</button>
+        <button className="deactivate-button" onClick={handleClick}>Deactivate</button>
+      </div>
+  </div>   
   )
 }
 
