@@ -29,6 +29,8 @@
 
     &-body {
       margin-bottom: 10px;
+      flex-direction: column;
+      display: flex;
     }
 
     &-small-text {

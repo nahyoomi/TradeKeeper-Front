@@ -15,13 +15,14 @@ export const Home = () => {
   const currentComponent = useSelector((state) => state.global.currentComponent);
 
   const [selectedItemCode, setSelectedItemCode] = useState(null);
+  const [items, setItems] = useState([]);
 
   const renderComponent = () => {
     switch (currentComponent) {
       case 'dashboard':
         return <Dashboard />;
       case 'items':
-        return <ItemsOverview setSelectedItemCode = {setSelectedItemCode}/>;
+        return <ItemsOverview setSelectedItemCode = {setSelectedItemCode} items={items} setItems={setItems}/>;
       case 'suppliers':
         return <SuppliersOverview setSelectedItemCode = {setSelectedItemCode}/>;
       case 'priceReductions':
@@ -29,7 +30,7 @@ export const Home = () => {
       case 'productDetails':
         return <ProductDetails itemCode={selectedItemCode} />;
         case 'createItem':
-          return <CreateItem />;
+          return <CreateItem items={items} setItems={setItems} />;
         case 'createSupplierModal':
           return <CreateSupplierModal />;
       default:

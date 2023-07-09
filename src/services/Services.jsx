@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let URL_MAIN = "http://localhost:8080";
+let URL_MAIN = "http://localhost:8080/api";
 
 //Related to Item
 export const createItem = async (data) => {
@@ -15,14 +15,22 @@ export const createItem = async (data) => {
     return response;
   };
 
-export const getItems = async() => {
-    let URL =`${URL_MAIN}/item/items`;
-    let response = await axios.get(URL);
+export const getItems = async(token) => {
+    let URL =`${URL_MAIN}/item/items/Active`;
+    console.log(token);
+    let response = await axios.get(URL, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept-Language': 'aleman',
+          "Access-Control-Allow-Origin": "*",
+          'Authorization1':  token/* "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4ODkwOTQzNSwiZXhwIjoxNjg4OTM5NDM1fQ.srh_DZDMcUIROSLNI0yg0FR-HWyrRYcg-Sw5FLzw3qA" */
+        },
+      });
     return response;
 };
 
 export const getItemByCode = async(itemCode) => {
-    const response = await axios.get(`http://localhost:8080/item/${itemCode}`);
+    const response = await axios.get(`${URL_MAIN}/item/${itemCode}`);
     return response.data;
 }
 
@@ -33,8 +41,12 @@ export const updateItem = async(data) => {
 }
 
 export const deactivateItem = async(data) => {
-    let URL = `${URL_MAIN}/item/remove`;
+    let URL = `${URL_MAIN}/item/remove/${data.idItem}/${data.reason}`;
     console.log(data, URL, 'esta es el body del delete');
+/*     const newData = {
+      idItem: 1 ,
+      reason: "No completo"
+    } */
     let response = await axios.delete(URL, data);
     return response;
 }

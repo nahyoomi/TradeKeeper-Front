@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
 import { getSuppliers } from '../../services/Services'
-import { useDispatch } from "react-redux";
-import { setCurrentComponent } from "../../redux/global/globalSlider";
+/* import { useDispatch } from "react-redux";
+import { setCurrentComponent } from "../../redux/global/globalSlider"; */
 import './SuppliersOverview.scss'
 import CreateSupplierModal from '../CreateSupplierModal/CreateSupplierModal';
 
 const SuppliersOverview = () => {
 
-  const dispatch = useDispatch();
+/*   const dispatch = useDispatch(); */
   const [suppliers, setSuppliers] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   const handleButtonClick = () => {
-    dispatch(setCurrentComponent('createSupplierModal'));
-    setShowModal(false);
-  };
-  const handleCloseModal = () => {
+    /* dispatch(setCurrentComponent('createSupplierModal')); */
     setShowModal(true);
+    console.log('entree', showModal);
   };
 
   useEffect(() => {
@@ -25,7 +23,7 @@ const SuppliersOverview = () => {
       // Manejo de errores 
       console.log("Ocurrió un error al obtener los elementos:", error); 
     });
-  }, []);
+  }, [showModal]);
 
   if(suppliers.length === 0){
     return (<p>There are no items avaible</p>)
@@ -40,7 +38,7 @@ const SuppliersOverview = () => {
         <button className="create-button" onClick={handleButtonClick}>
           New Supplier
         </button>
-        {showModal && <CreateSupplierModal onClose={handleCloseModal} />}
+        {showModal && <CreateSupplierModal setShowModal={setShowModal} />}
       </div>
       <div className="supplier-list">
         {suppliers.map((supplier) => (

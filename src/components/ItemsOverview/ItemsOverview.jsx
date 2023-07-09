@@ -1,21 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import './ItemsOverview.scss';
 import { getItems } from '../../services/Services';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { setCurrentComponent } from '../../redux/global/globalSlider';
 import PropTypes from 'prop-types';
 
-const ItemsOverview = ({setSelectedItemCode}) => {
+const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
+  const token = useSelector((state) => state.global.token);
+
   ItemsOverview.propTypes = {
     setSelectedItemCode: PropTypes.func.isRequired,
+    items: PropTypes.array.isRequired,
+    setItems: PropTypes.func.isRequired,
   };
   const dispatch = useDispatch();
-  const [items, setItems] = useState([]);
+  /* const [items, setItems] = useState([]); */
 
   useEffect(() => {
-    getItems().then((res) => {setItems(res.data)})
-    .catch((error) => { 
-      // Manejo de errores 
+    /* console.log(items, 'estas son mis items');
+    setItems(items) */
+    getItems(token).then((res) => {setItems(res.data)})
+    .catch((error) => {  
       console.log("Ocurrió un error al obtener los elementos:", error); 
     });
   }, []);
@@ -53,7 +58,7 @@ const ItemsOverview = ({setSelectedItemCode}) => {
           <li className="table-header-item"></li>
         </ul>
         {items.map((item) => (
-          <ul className="items-list" key={item.itemCode} onClick={(e) => handleClick(item.itemCode,e)}>
+          <ul className="items-list" key={item.idItem} onClick={(e) => handleClick(item.itemCode,e)}>
             <li className="items-list-item">{item.itemCode}</li>
             <li className="items-list-item">{item.price}</li>
             <li className="items-list-item">{item.state}</li>

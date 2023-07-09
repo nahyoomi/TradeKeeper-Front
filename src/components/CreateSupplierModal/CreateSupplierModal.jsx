@@ -3,20 +3,20 @@
  import { useForm } from 'react-hook-form';
  import { createSupplier } from '../../services/Services'
 
-const CreateSupplierModal = ({ onClose }) => {
+const CreateSupplierModal = ({ setShowModal }) => {
 
-    const { register, handleSubmit, errors } = useForm();
+    const { register, handleSubmit, formState: { errors }} = useForm();
 
     const onSubmit = (data) => {
       console.log(data);
       createSupplier(data)
       .then((res) => {
         console.log(res, 'que informacion llega');
+        setShowModal(false)
       })
       .catch((error) => {
         console.log("no se esta enviando el supplier ", error);
       });
-      onClose();
     };
 
   return (
@@ -24,7 +24,7 @@ const CreateSupplierModal = ({ onClose }) => {
     <div className="modal-content">
       <div className="modal-header">
         <h3>New Supplier</h3>
-        <button className="close-button" onClick={onClose}>
+        <button className="close-button" onClick={()=> setShowModal(false) }>
           X
         </button>
       </div>
@@ -34,22 +34,22 @@ const CreateSupplierModal = ({ onClose }) => {
             <label>Provider name:</label>
             <input
               type="text"
-              name="supplierName"
-              {...register("supplierName", { required: true })}
+              /* name="name" */
+              {...register("name", { required: true })}
             />
-            {errors.supplierName && <span>Field is required</span>}
+            {errors.name && <span>Field is required</span>}
           </div>
           <div>
             <label>Country:</label>
             <input
               type="text"
-              name="country"
-              {...register({ required: true })}
+              /* name="country" */
+              {...register("country",{ required: true })}
             />
             {errors.country && <span>Field is required</span>}
           </div>
           <div className="modal-footer">
-            <button type="button" onClick={onClose}>
+            <button type="button" onClick={()=> setShowModal(false) }>
               Cancel
             </button>
             <button type="submit">Save</button>
@@ -62,7 +62,6 @@ const CreateSupplierModal = ({ onClose }) => {
 }
 
 CreateSupplierModal.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  setShowModal: PropTypes.func.isRequired,
 };
-
 export default CreateSupplierModal
