@@ -1,12 +1,21 @@
 import { useEffect, useState } from 'react';
 import { getSuppliers } from '../../services/Services'
-import Toolbar from '../Toolbar/Toolbar'
+/* import { useDispatch } from "react-redux";
+import { setCurrentComponent } from "../../redux/global/globalSlider"; */
 import './SuppliersOverview.scss'
+import CreateSupplierModal from '../CreateSupplierModal/CreateSupplierModal';
 
 const SuppliersOverview = () => {
 
- /*  const dispatch = useDispatch(); */
+/*   const dispatch = useDispatch(); */
   const [suppliers, setSuppliers] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
+    /* dispatch(setCurrentComponent('createSupplierModal')); */
+    setShowModal(true);
+    console.log('entree', showModal);
+  };
 
   useEffect(() => {
     getSuppliers().then((res) => {setSuppliers(res.data)})
@@ -14,13 +23,7 @@ const SuppliersOverview = () => {
       // Manejo de errores 
       console.log("Ocurrió un error al obtener los elementos:", error); 
     });
-  }, []);
-
-
-  const handleClick = () => {
-  /*   dispatch(setCurrentComponent('suppliers')); */
-    console.log(suppliers);
-  };
+  }, [showModal]);
 
   if(suppliers.length === 0){
     return (<p>There are no items avaible</p>)
@@ -28,19 +31,27 @@ const SuppliersOverview = () => {
 
   return (
     <div className='suppliers-container'>
-      <Toolbar/>
-        <div className="table">
-            <ul className='table-header'>
-              <li className='table-header-suppliers'>Item Code</li>
-              <li className='table-header-suppliers'>Price</li>
-            </ul>
-          {suppliers.map((supplier) => (
-            <ul className='suppliers-list' key={supplier.supplierId} onClick={() => handleClick(supplier.supplierId)}>
-              <li className='suppliers-list-item'>{supplier.name}</li>
-              <li className='suppliers-list-item'>{supplier.country}</li>
-            </ul>
-          ))}
+            <div className="header">
+        <div className="search-bar">
+          {/* Aquí puedes agregar tu lógica de búsqueda */}
         </div>
+        <button className="create-button" onClick={handleButtonClick}>
+          New Supplier
+        </button>
+        {showModal && <CreateSupplierModal setShowModal={setShowModal} />}
+      </div>
+      <div className="supplier-list">
+        {suppliers.map((supplier) => (
+          <div key={supplier.supplierId} className="supplier-item">
+            <span>{supplier.name}</span>
+            <span>{supplier.country}</span>
+            <div className="buttons">
+              <button className="buttons-edit"/* onClick={() => handleEdit(supplier.id)} */>Edit</button>
+              <button className="buttons-remove"/* onClick={() => handleDelete(supplier.id)} */>Remove</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

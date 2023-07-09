@@ -1,86 +1,81 @@
 @import '../../styles/vars';
 
-.card-container{
-    background-color: $color-background;
-    font-family: $font-family;
-    font-size: $font-size-base;
-    color: $font-color;
-    padding: $spacing-unit;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
-}
-
-.headset{
+.card {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: $spacing-unit;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 
-    &-left button {
-        background-color: transparent;
-        border: none;
-        color: $color-primary;
-        font-size: $font-size-base;
-        cursor: pointer; 
+    &-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
-    &-right span {
-        color: $color-primary;
-        font-size: $font-size-base;
+    &-image {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 10px;
     }
-}
 
-.card-content{
-    margin-bottom: $spacing-unit;
-    &_tittle h2 {
-        font-size: 24px;
-        font-weight: 900;
-        margin-bottom: $spacing-unit;
+    &-item-code {
+      font-size: 12px;
     }
-}
 
-.image img {
-    width: 100%;
-    height: auto;
-    margin-bottom: $spacing-unit; 
-}
-
-.price {
-    display: flex;
-    align-items: center;
-    margin-bottom: $spacing-unit; 
-    .color-square {
-        width: 20px;
-        height: 20px;
-        background-color: $color-highlight;
-        margin-right: $spacing-unit;
+    &-body {
+      margin-bottom: 10px;
+      flex-direction: column;
+      display: flex;
     }
-    .span {
-        font-size: $font-size-base;
+
+    &-small-text {
+      font-size: 12px;
     }
-}
 
-.details {
-    margin-top: $spacing-unit;
-    &-title small{
-        font-size: 12px;
+    &-title {
+      font-size: 18px;
+      margin-bottom: 5px;
     }
-}
 
+    &-description {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
 
-// Media queries for devices
-@media (min-width: $breakpoint-mobile) {
-    
+    &-info {
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    &-price,&-state, &-created-by {
+      margin-bottom: 5px;
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
   }
   
-  @media (min-width: $breakpoint-tablet) {
-   
+  .edit-button,
+  .back-button, .deactivate-button {
+    padding: 5px 10px;
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
-  @media (min-width: $breakpoint-desktop) {
-   
-  }
-  
-  @media (min-width: $breakpoint-large-desktop) {
-    
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }

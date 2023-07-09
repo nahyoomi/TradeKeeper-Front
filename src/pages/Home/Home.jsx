@@ -8,27 +8,31 @@ import ItemsOverview from '../../components/ItemsOverview/ItemsOverview'
 import PriceReductionsOverview from '../../components/PriceReductionsOverview/PriceReductionsOverview'
 import ProductDetails from '../../components/ProductDetails/ProductDetails'
 import { CreateItem } from '../../components/CreateItem/CreateItem'
+import CreateSupplierModal from '../../components/CreateSupplierModal/CreateSupplierModal'
 
 export const Home = () => {
 
   const currentComponent = useSelector((state) => state.global.currentComponent);
 
   const [selectedItemCode, setSelectedItemCode] = useState(null);
+  const [items, setItems] = useState([]);
 
   const renderComponent = () => {
     switch (currentComponent) {
       case 'dashboard':
         return <Dashboard />;
       case 'items':
-        return <ItemsOverview setSelectedItemCode = {setSelectedItemCode}/>;
+        return <ItemsOverview setSelectedItemCode = {setSelectedItemCode} items={items} setItems={setItems}/>;
       case 'suppliers':
         return <SuppliersOverview setSelectedItemCode = {setSelectedItemCode}/>;
       case 'priceReductions':
-        return <PriceReductionsOverview />;
+        return <PriceReductionsOverview setSelectedItemCode = {setSelectedItemCode}/>;
       case 'productDetails':
         return <ProductDetails itemCode={selectedItemCode} />;
         case 'createItem':
-          return <CreateItem />;
+          return <CreateItem items={items} setItems={setItems} />;
+        case 'createSupplierModal':
+          return <CreateSupplierModal />;
       default:
         return null;
     }

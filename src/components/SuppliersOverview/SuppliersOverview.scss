@@ -1,37 +1,78 @@
 @import '../../styles/vars';
 
 .suppliers-container{
-    margin-left: 20px;
-
+    /* margin-left: 20px; */
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.table{
-    &-header {
-        display: flex;
-        justify-content: space-between;
-        list-style: none;
-        padding: 0;
-        font-weight: bold;
-    }
-}
-.suppliers-list{
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
     display: flex;
     align-items: center;
-    list-style-type: none;
-    margin-bottom: $spacing-unit;
-    border: 1px solid $color-primary;
-    border-radius: $border-radius;
-    transition: background-color 0.3s ease;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  
+  .search-bar input {
+    border: none;
+    outline: none;
+    margin-left: 5px;
+  }
+  
+  .create-button {
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
     cursor: pointer;
-    &:hover {
-        background-color: $color-primary;
-        color: white;
-      }
-
-    &-item{
-        margin-right: $spacing-unit;
-        padding: $spacing-unit;
-
+  }
+  
+  .supplier-list {
+    background-color: #ffffff;
+    padding: 10px;
+  }
+  
+  .supplier-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buttons {
+    display: flex;
+    &-remove {
+      background-color: #f44336;
+      color: #ffffff;
     }
 
-}
+    &-edit {
+      background-color: #2196f3;
+      color: #ffffff;
+    }
+  }
+  
+  .buttons button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
+  
+
