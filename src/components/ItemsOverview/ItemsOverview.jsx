@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getItems } from '../../services/Services';
-import { useDispatch, useSelector  } from 'react-redux';
+import { useDispatch/* , useSelector  */ } from 'react-redux';
 import { setCurrentComponent } from '../../redux/global/globalSlider';
 import { HiOutlinePlus } from "react-icons/hi";
 import PropTypes from 'prop-types';
 import './ItemsOverview.scss';
 
 const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
-  const token = useSelector((state) => state.global.token);
+  /* const token = useSelector((state) => state.global.token); */
+  const [filter, setFilter] = useState('All');
 
   ItemsOverview.propTypes = {
     setSelectedItemCode: PropTypes.func.isRequired,
@@ -20,11 +21,15 @@ const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
   useEffect(() => {
     /* console.log(items, 'estas son mis items');
     setItems(items) */
-    getItems(token).then((res) => {setItems(res.data)})
+    getItems(filter).then((res) => {setItems(res.data)})
     .catch((error) => {  
       console.log("Ocurrió un error al obtener los elementos:", error); 
     });
-  }, []);
+  }, [filter]);
+
+  useEffect(() => {
+    console.log("filter", filter);
+  }, [filter]);
   
   const handleButtonClick = () => {
     dispatch(setCurrentComponent('createItem'));
@@ -37,27 +42,33 @@ const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
     console.log(items);
   };
   
-/*   const FilterComponent = () => {
-    const [filter, setFilter] = useState('all');
   
     const handleFilterChange = (event) => {
       setFilter(event.target.value);
+      /* console.log("filter", event.target.value); */
     };
- */
-  if(items.length === 0){
+
+
+/*   if(items.length === 0){
     return (<p>There are no items avaible</p>)
-  }
+  } */
 
   return (
     <div className="crud-container">
       <div className="header">
-        <select className="header-selector"/* value={filter} onChange={handleFilterChange} */>
-          <option value="active">Active</option>
-          <option value="inactive">Deactive</option>
+        <select className="header-selector"value={filter} onChange={handleFilterChange}>
+          <option value="All">All</option>
+          <option value="Active">Active</option>
+          <option value="Deactive">Deactive</option>
         </select>
         <button className="create-button"  onClick={handleButtonClick}><HiOutlinePlus/> New Item</button>
       </div>
-      <div className="table">
+      {
+          items.length === 0
+        ?<p>There are no items avaible</p>
+        :
+        <>
+              <div className="table">
         <ul className="table-header">
           <li className="table-header-item">Item Code</li>
           <li className="table-header-item">Description</li>
@@ -78,6 +89,9 @@ const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
           </ul>
         ))}
         </div>
+        </>
+        }
+
       </div>
   );
 }

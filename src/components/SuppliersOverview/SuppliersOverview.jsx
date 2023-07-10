@@ -14,7 +14,6 @@ const SuppliersOverview = () => {
   const handleButtonClick = () => {
     /* dispatch(setCurrentComponent('createSupplierModal')); */
     setShowModal(true);
-    console.log('entree', showModal);
   };
 
   useEffect(() => {

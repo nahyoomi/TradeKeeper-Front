@@ -8,16 +8,16 @@ import Swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import { setCurrentComponent } from "../../redux/global/globalSlider";
 import { AssignSupplierModal } from "../AssignSupplierModal/AssignSupplierModal";
-import { getSuppliers } from "../../services/Services";
+import { getSuppliers, updateSupplier } from "../../services/Services";
 import { BiError } from "react-icons/bi";
 
 const ProductDetails = ({ itemCode }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showModalReduction, setShowModalReduction] = useState(false);
   const dispatch = useDispatch();
   const [changeStateItem, setChangeStateItem] = useState();
   const [item, setItem] = useState(null);
   const [suppliers, setSuppliers] = useState([]);
-  const [selectedSupplier, setSelectedSupplier] = useState("");
+  /* const [selectedSupplier, setSelectedSupplier] = useState(""); */
   const [isEditing, setIsEditing] = useState("Edit");
   const {
     register,
@@ -88,11 +88,24 @@ const ProductDetails = ({ itemCode }) => {
     getItemByCode(itemCode).then((response) => {
       setItem(response);
     });
-  }, [itemCode]);
+  }, [itemCode,showModalReduction]); 
 
   const handleSupplierChange = (event) => {
-    setSelectedSupplier(event.target.value);
-    console.log("hcdwhdclq", selectedSupplier);
+    /* setSelectedSupplier(event.target.value); */
+    const newData = 
+    { 
+      ...item,
+      suppliers: [
+        {  
+          idItem: item.idItem  ,
+          supplierId: parseInt(event.target.value)
+        }
+      ]
+    } 
+    console.log("newData", newData);
+    updateSupplier(newData).then((response) => {
+      console.log("response",response);
+    });
   };
 
   const handleEditButtonClick = () => {
@@ -132,7 +145,8 @@ const ProductDetails = ({ itemCode }) => {
   }
 
   return (
-    <form className="card" onSubmit={handleSubmit(onSubmit)}>
+    <>
+          <form className="card" onSubmit={handleSubmit(onSubmit)}>
       <h2 className="card-title">Item Details</h2>
       <div className="card-header">
         <label  className="card-header-labels">Item Code</label>
@@ -193,23 +207,36 @@ const ProductDetails = ({ itemCode }) => {
           </label>
           <label  className="card-header-labels">Created by</label>
           <div className="card-created-by">{item.userId}</div>
+
+          <label  className="card-header-labels">Price Reduction:</label>
+          {item.priceReductions.map((retuction)=>{
+           return(
+            <div  key={retuction.priceReductionId}>
+              <p> {retuction.priceReductionId} </p>
+              <span> {retuction.reducedPrice} </span>
+              <span> {retuction.startDate} </span>
+              <span> {retuction.endDate} </span>
+            </div>
+           
+           ) 
+          })}
         </div>
       </div>
       <div className="card-elections">
-      <select value={selectedSupplier} onChange={handleSupplierChange}>
+      <select /* value={selectedSupplier} */ onChange={handleSupplierChange}>
           {suppliers.map((supplier) => (
             <option key={supplier.supplierId} value={supplier.supplierId}>
               {supplier.name}
             </option>
           ))}
         </select>
-        <select value={selectedSupplier} onChange={handleSupplierChange}>
+{/*         <select value={selectedSupplier} onChange={handleSupplierChange}>
           {suppliers.map((supplier) => (
             <option key={supplier.supplierId} value={supplier.supplierId}>
               {supplier.name}
             </option>
           ))}
-        </select>
+        </select> */}
       </div>
       <div className="card-buttons">
         <button className="edit-button" onClick={handleEditButtonClick}>
@@ -218,9 +245,15 @@ const ProductDetails = ({ itemCode }) => {
         <button className="deactivate-button" onClick={handleClick}>
           Deactivate
         </button>
+
       </div>
-      {showModal && <AssignSupplierModal setShowModal={setShowModal} />}
     </form>
+    <button /* className="deactivate-button" */ onClick={()=> setShowModalReduction(true)}>
+          modalReduction
+        </button>
+    {showModalReduction && <AssignSupplierModal item={item} setShowModalReduction={setShowModalReduction} />}
+    </>
+
   );
 };
 

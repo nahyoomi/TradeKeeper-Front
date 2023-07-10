@@ -15,19 +15,18 @@ export const createItem = async (data) => {
     return response;
   };
 
-export const getItems = async(token) => {
-    let URL =`${URL_MAIN}/item/items/Active`;
-    console.log(token);
+export const getItems = async(filter) => {
+    let URL =`${URL_MAIN}/item/items/${filter}`;
     let response = await axios.get(URL, {
         headers: {
           'Content-Type': 'application/json',
           'Accept-Language': 'aleman',
           "Access-Control-Allow-Origin": "*",
-          'Authorization1':  token/* "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY4ODkwOTQzNSwiZXhwIjoxNjg4OTM5NDM1fQ.srh_DZDMcUIROSLNI0yg0FR-HWyrRYcg-Sw5FLzw3qA" */
         },
       });
     return response;
 };
+
 
 export const getItemByCode = async(itemCode) => {
     const response = await axios.get(`${URL_MAIN}/item/${itemCode}`);
@@ -59,6 +58,12 @@ export const createSupplier = async(data) =>{
     return response;
 };
 
+export const updateSupplier = async(data) =>{
+  let URL =`${URL_MAIN}/item/supplier`;
+  let response = await axios.put(URL, data);
+  return response;
+};
+
 export const getSuppliers = async() => {
     let URL =`${URL_MAIN}/supplier/suppliers`;
     let response = await axios.get(URL);
@@ -67,8 +72,8 @@ export const getSuppliers = async() => {
 
 //Related to price reductions 
 
-export const getPriceReductions = async() => {
-    let URL =`${URL_MAIN}/supplier/suppliers`;
-    let response = await axios.get(URL);
-    return response;
+export const addReduction = async(data) =>{
+  let URL =`${URL_MAIN}/item/priceReduction`;
+  let response = await axios.put(URL, data);
+  return response;
 };

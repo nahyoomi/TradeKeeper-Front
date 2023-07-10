@@ -20,7 +20,7 @@ export const CreateItem = ({items, setItems }) => {
 
   useEffect(() => {
    /*  setItems(items) */
-    getItems().then((res) => {setItems(res.data)})
+    getItems("All").then((res) => {setItems(res.data)})
     .catch((error) => {  
       console.log("Ocurrió un error al obtener los elementos:", error); 
     });
