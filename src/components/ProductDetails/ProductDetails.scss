@@ -8,11 +8,18 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 0 auto;
+    box-shadow:$box-shadow;
 
     &-header {
       display: flex;
       align-items: center;
       margin-bottom: 10px;
+
+      &-labels {
+        font-size: 12px;
+        font-weight: bold;
+      }
     }
 
     &-image {
@@ -58,9 +65,19 @@
       margin-bottom: 5px;
     }
 
+    &-state {
+      background-color: lightgreen;
+      width: 35px;
+      border-radius: 8px;
+      padding: 4px;
+      height: 15px;
+    }
+
     &-buttons {
       display: flex;
       justify-content: space-between;
+      width: 100%;
+      margin-top: 16px;
     }
   }
   
@@ -73,9 +90,17 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  .edit-button {
+    background-color: #2196f3;
+  }
+  .deactivate-button {
+    background-color: #f44336;
+  }
   
   .card:hover {
     transform: scale(1.05);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
+
+  

@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { setCurrentComponent } from "../../redux/global/globalSlider";
 import { AssignSupplierModal } from "../AssignSupplierModal/AssignSupplierModal";
 import { getSuppliers } from "../../services/Services";
-/* import { BiError } from "react-icons/bi"; */
+import { BiError } from "react-icons/bi";
 
 const ProductDetails = ({ itemCode }) => {
   const [showModal, setShowModal] = useState(false);
@@ -22,7 +22,7 @@ const ProductDetails = ({ itemCode }) => {
   const {
     register,
     handleSubmit,
-    /*  formState: { errors }, */
+     formState: { errors },
   } = useForm();
 
   useEffect(() => {
@@ -114,14 +114,14 @@ const ProductDetails = ({ itemCode }) => {
         ...item.suppliers
       ]
     }
-    console.log(itemUpdated, 'campos actualizados');
+    console.log(itemUpdated, 'Fields updated');
     updateItem(itemUpdated)
     .then((res) => {
       setItem(res.data)
       console.log(res);
     })
     .catch((error) => {
-      console.log("no se ha actualizado ", error);
+      console.log("Nothing was updated", error);
     });
 
     
@@ -133,14 +133,16 @@ const ProductDetails = ({ itemCode }) => {
 
   return (
     <form className="card" onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="card-title">This is title</h2>
+      <h2 className="card-title">Item Details</h2>
       <div className="card-header">
-        {/* <img src="/" alt="Imagen" className="card-image" /> */}
-        <div className="card-item-code"> Item code : {itemCode}</div>
+        <label  className="card-header-labels">Item Code</label>
+        <div className="card-item-code">{itemCode}</div>
       </div>
       <div className="card-body">
       {isEditing === "Edit" ? (
-          <div className="card-small-text">{item.creationDate}</div>
+          <label  className="card-header-labels">Created on
+            <div className="card-small-text">{item.creationDate}</div>
+          </label>
         ) : (
           <>
             <input
@@ -149,25 +151,29 @@ const ProductDetails = ({ itemCode }) => {
               placeholder={item.creationDate}
               {...register("creationDate", { required: true})}
             />
-            {/*  {errors.description && <p className="form-error"><BiError/> This field is required</p>} */}
+             {errors.description && <p className="form-error"><BiError/> This field is required</p>}
           </>
         )}
         {isEditing === "Edit" ? (
-          <p className="card-description">{item.description}</p>
+           <label  className="card-header-labels">Description
+            <p className="card-description">{item.description}</p>
+          </label>
         ) : (
           <>
             <input
               className="form-input"
-              type="text"
+              type="textarea"
               placeholder={item.description}
-              {...register("description", { required: true, maxLength: 250 })}
+              {...register("description", { required: true, maxLength: 50 })}
             />
-            {/*  {errors.description && <p className="form-error"><BiError/> This field is required</p>} */}
+             {errors.description && <p className="form-error"><BiError/> This field is required</p>}
           </>
         )}
         <div className="card-info">
           {isEditing === "Edit" ? (
-            <div className="card-price">${item.price}</div>
+            <label  className="card-header-labels">Price
+              <div className="card-price">${item.price}</div>
+            </label>
           ) : (
             <>
               <input
@@ -179,17 +185,24 @@ const ProductDetails = ({ itemCode }) => {
                   pattern: /^[0-9]+(\.[0-9]+)?$/,
                 })}
               />
-              {/* {errors.price && <p className="form-error"> <BiError/> Field required, please enter a valid number</p>} */}
+              {errors.price && <p className="form-error"> <BiError/> Field required, please enter a valid number</p>}
             </>
           )}
-          <div className="card-state">{item.state}</div>
+          <label  className="card-header-labels">State
+            <div className="card-state">{item.state}</div>
+          </label>
+          <label  className="card-header-labels">Created by</label>
           <div className="card-created-by">{item.userId}</div>
         </div>
       </div>
-      <div className="card-buttons">
-        <button className="edit-button" onClick={handleEditButtonClick}>
-          {isEditing}
-        </button>
+      <div className="card-elections">
+      <select value={selectedSupplier} onChange={handleSupplierChange}>
+          {suppliers.map((supplier) => (
+            <option key={supplier.supplierId} value={supplier.supplierId}>
+              {supplier.name}
+            </option>
+          ))}
+        </select>
         <select value={selectedSupplier} onChange={handleSupplierChange}>
           {suppliers.map((supplier) => (
             <option key={supplier.supplierId} value={supplier.supplierId}>
@@ -197,6 +210,11 @@ const ProductDetails = ({ itemCode }) => {
             </option>
           ))}
         </select>
+      </div>
+      <div className="card-buttons">
+        <button className="edit-button" onClick={handleEditButtonClick}>
+          {isEditing}
+        </button>
         <button className="deactivate-button" onClick={handleClick}>
           Deactivate
         </button>

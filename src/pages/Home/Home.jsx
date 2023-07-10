@@ -41,7 +41,7 @@ export const Home = () => {
   return (
     <Layout currentComponent={currentComponent}>
       <div className='home-container'>
-      <div className='dashboard-container'>
+      <div className='dynamic-container'>
         {renderComponent()}
       </div>
       </div>

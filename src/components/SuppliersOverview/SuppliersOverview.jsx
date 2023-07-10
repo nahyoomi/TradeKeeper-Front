@@ -45,10 +45,6 @@ const SuppliersOverview = () => {
           <div key={supplier.supplierId} className="supplier-item">
             <span>{supplier.name}</span>
             <span>{supplier.country}</span>
-            <div className="buttons">
-              <button className="buttons-edit"/* onClick={() => handleEdit(supplier.id)} */>Edit</button>
-              <button className="buttons-remove"/* onClick={() => handleDelete(supplier.id)} */>Remove</button>
-            </div>
           </div>
         ))}
       </div>

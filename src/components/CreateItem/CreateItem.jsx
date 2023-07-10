@@ -2,14 +2,13 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from 'react';
 import { createItem } from "../../services/Services";
-import "./CreateItem.scss";
 import { BiError } from "react-icons/bi";
 import { useDispatch } from 'react-redux'
 import { setCurrentComponent } from '../../redux/global/globalSlider';
 import PropTypes from 'prop-types';
 import { getItems } from '../../services/Services';
 import Swal from 'sweetalert';
-
+import "./CreateItem.scss";
 
 export const CreateItem = ({items, setItems }) => {
   const dispatch = useDispatch();

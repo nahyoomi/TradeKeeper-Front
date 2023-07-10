@@ -6,10 +6,12 @@ const Header = ({ currentComponent }) => {
   const currentPath = `/${currentComponent}`;
   return (
     <div className="heading">
-      <div>
-        <span>Dashboard</span> 
-        <HiChevronRight/> 
-        {currentPath}
+      <div className='heading-content'>
+        <div className='heading-content-route'>
+          <span>Home</span>
+          <HiChevronRight/>
+          {currentPath}
+        </div>
       </div>
     </div>
   )

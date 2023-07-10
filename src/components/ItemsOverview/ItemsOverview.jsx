@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import './ItemsOverview.scss';
 import { getItems } from '../../services/Services';
 import { useDispatch, useSelector  } from 'react-redux';
 import { setCurrentComponent } from '../../redux/global/globalSlider';
+import { HiOutlinePlus } from "react-icons/hi";
 import PropTypes from 'prop-types';
+import './ItemsOverview.scss';
 
 const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
   const token = useSelector((state) => state.global.token);
@@ -35,7 +36,14 @@ const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
     dispatch(setCurrentComponent('productDetails'));
     console.log(items);
   };
-
+  
+/*   const FilterComponent = () => {
+    const [filter, setFilter] = useState('all');
+  
+    const handleFilterChange = (event) => {
+      setFilter(event.target.value);
+    };
+ */
   if(items.length === 0){
     return (<p>There are no items avaible</p>)
   }
@@ -43,30 +51,29 @@ const ItemsOverview = ({setSelectedItemCode, items, setItems}) => {
   return (
     <div className="crud-container">
       <div className="header">
-        <div className="search-bar">
-          {/* Componente del buscador */}
-        </div>
-        <button className="create-button"  onClick={handleButtonClick}>New Item</button>
+        <select className="header-selector"/* value={filter} onChange={handleFilterChange} */>
+          <option value="active">Active</option>
+          <option value="inactive">Deactive</option>
+        </select>
+        <button className="create-button"  onClick={handleButtonClick}><HiOutlinePlus/> New Item</button>
       </div>
       <div className="table">
         <ul className="table-header">
           <li className="table-header-item">Item Code</li>
+          <li className="table-header-item">Description</li>
           <li className="table-header-item">Price</li>
           <li className="table-header-item">State</li>
-          <li className="table-header-item">Creation Date</li>
-          <li className="table-header-item">Created by User</li>
+          <li className="table-header-item">Created by</li>
           <li className="table-header-item"></li>
         </ul>
         {items.map((item) => (
           <ul className="items-list" key={item.idItem} onClick={(e) => handleClick(item.itemCode,e)}>
             <li className="items-list-item">{item.itemCode}</li>
+            <li className="items-list-item">{item.description}</li>
             <li className="items-list-item">{item.price}</li>
             <li className="items-list-item">{item.state}</li>
-            <li className="items-list-item">{item.creationDate}</li>
             <li className="items-list-item">{item.userId}</li>
             <li className="items-list-item">
-              {/* <button onClick={() => handleEdit(item.itemCode)}>Details</button> */}
-              {/* <button onClick={() => handleDelete(item.itemCode)}>Deactivate</button>  */}
             </li>
           </ul>
         ))}
