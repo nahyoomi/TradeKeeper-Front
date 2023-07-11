@@ -31,9 +31,6 @@ const SuppliersOverview = () => {
   return (
     <div className='suppliers-container'>
             <div className="header">
-        <div className="search-bar">
-          {/* Aquí puedes agregar tu lógica de búsqueda */}
-        </div>
         <button className="create-button" onClick={handleButtonClick}>
           New Supplier
         </button>
