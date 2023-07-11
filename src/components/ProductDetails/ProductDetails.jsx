@@ -9,6 +9,7 @@ import PropTypes from "prop-types"
 import Swal from "sweetalert"
 import { BiError } from "react-icons/bi"
 import "./ProductDetails.scss"
+/* import { isHtmlElement } from "react-router-dom/dist/dom" */
 
 const ProductDetails = ({ itemCode }) => {
   const [showModalReduction, setShowModalReduction] = useState(false);
@@ -85,25 +86,34 @@ const ProductDetails = ({ itemCode }) => {
 
   useEffect(() => {
     getItemByCode(itemCode).then((response) => {
-      setItem(response);
+      setItem(response.item);
     });
-  }, [itemCode, showModalReduction]);
+  }, [itemCode, showModalReduction,isEditing]);
 
   const handleSupplierChange = (event) => {
-    /* setSelectedSupplier(event.target.value); */
     const newData = {
-      ...item,
-      suppliers: [
-        {
           idItem: item.idItem,
           supplierId: parseInt(event.target.value),
-        },
-      ],
     };
     console.log("newData", newData);
     updateSupplier(newData).then((response) => {
       console.log("response", response);
-    });
+      if(response.status == 200){
+        Swal({
+          title: "Item has been Add",
+          text: `Add  Supplier : ${response.data.item_supplierId}`,
+          icon: "success",
+        });
+        setIsEditing("Edit")
+      }
+    }).catch((error) =>{
+      console.log(error)
+      Swal({
+        title: "Error",
+        text: `the supply is already added`,
+        icon: "error",
+      });
+    })
   };
 
   const handleEditButtonClick = () => {
@@ -111,20 +121,17 @@ const ProductDetails = ({ itemCode }) => {
   };
 
   const onSubmit = async (data) => {
-    if (!data.field1 || !data.field2 || !data.field3) {
+    console.log("data",data);
+    if (!data.creationDate || !data.description || !data.price) {
       console.log("All fields must be completed in any other case default results");
       return;
     }
     
     const itemUpdated = {
-      field1: data.field1 ?? item.field1,
-      field2: data.field2 ?? item.field2,
-      field3: data.field3 ?? item.field3,
+      ...item,
+      creationDate: data.creationDate,
+      description: data.description,
       price: parseInt(data.price),
-      idItem: item.idItem,
-      itemCode: item.itemCode,
-      state: item.state,
-      userId: item.userId,
       priceReductions: [...item.priceReductions],
       suppliers: [...item.suppliers],
     };
@@ -139,7 +146,6 @@ const ProductDetails = ({ itemCode }) => {
       console.log("Nothing was updated", error);
     }
   };
-  
   if (!item) {
     return <p>This {itemCode} is not related to any items</p>;
   }
@@ -224,23 +230,31 @@ const ProductDetails = ({ itemCode }) => {
             <label className="card-header-labels">Created by</label>
             <div className="card-created-by">{item.userId}</div>
 
+            <label className="card-header-labels">suppliers:</label>
+            {item.suppliers.map((suppliers) => {
+              return (
+                <div key={suppliers.item_supplierId}>
+                  <span>Id: {suppliers.item_supplierId} </span>
+                </div>
+              );
+            })}
+
             <label className="card-header-labels">Price Reductions </label>
+            {console.log("item",item.priceReductions)}
             {item.priceReductions.map((reduction) => {
               return (
                 <div key={reduction.priceReductionId}>
-                  <p>{reduction.priceReductionId}</p>
-                  <span>{reduction.reducedPrice}</span>
-                  <span>{DateTime.fromISO(reduction.startDate).toFormat("dd/MM/yyyy")}</span>
-                  <span>{DateTime.fromISO(reduction.endDate).toFormat("dd/MM/yyyy")}</span>
+                  <span><strong>Id: </strong>{reduction.priceReductionId}</span>
+                  <span><strong>Price: </strong>{reduction.reducedPrice}</span>
+                  <span><strong>start Date: </strong>{DateTime.fromISO(reduction.startDate).toFormat("dd/MM/yyyy")}</span>
+                  <span><strong>endDate: </strong>{DateTime.fromISO(reduction.endDate).toFormat("dd/MM/yyyy")}</span>
                 </div>
               );
             })}
           </div>
         </div>
         <div className="card-elections">
-          <select className="card-elections-select"
-            /* value={selectedSupplier} */ onChange={handleSupplierChange}
-          >
+          <select className="card-elections-select" onChange={handleSupplierChange}>
             {suppliers.map((supplier) => (
               <option key={supplier.supplierId} value={supplier.supplierId}>
                 {supplier.name}

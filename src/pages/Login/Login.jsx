@@ -1,5 +1,5 @@
 import { authUser } from '../../services/Users/UserServices' 
-import { setToken } from '../../redux/global/globalSlider'
+import { setUser } from '../../redux/global/globalSlider'
 import { useDispatch } from "react-redux" 
 import { useForm } from "react-hook-form"
 import { useNavigate } from 'react-router-dom'
@@ -17,7 +17,7 @@ const Login = () => {
       const res = await authUser(data);
       if (res.status === 200) {
         console.log(res);
-        dispatch(setToken(res.data.token));
+        dispatch(setUser(res.data));
         navigate('/dashboard');
       }
     } catch (error) {
@@ -34,25 +34,7 @@ const Login = () => {
       },
     });
   };
-/*   const onSubmit = (data) => { 
-    authUser(data) 
-    .then((res) => { 
-      if(res.status === 200){ 
-        console.log(res); 
-        dispatch(setToken(res.data.token)); 
-        navigate('/dashboard'); 
-      }  
-    }) 
-    .catch((error) => { 
-      console.log("User not registered ", error); 
-      Swal({ 
-        text: 'User not registered, please contact your Admin', 
-        buttons: { 
-          confirm: 'Understand', 
-        }, 
-      }) 
-    }); 
-  };  */
+
  
   return ( 
     <div className='login-container'> 

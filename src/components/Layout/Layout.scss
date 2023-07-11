@@ -8,6 +8,10 @@
    &-content {
     display: flex;
     justify-content: space-between;
+    @media (max-width: $breakpoint-mobile){
+        flex-direction: column;
+        align-items: center;
+    }
 
     &-container{
         margin: 0 auto;
