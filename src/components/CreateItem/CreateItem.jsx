@@ -1,28 +1,23 @@
 
-import { useForm } from "react-hook-form";
-import { useEffect } from 'react';
-import { createItem } from "../../services/Services";
-import { BiError } from "react-icons/bi";
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setCurrentComponent } from '../../redux/global/globalSlider';
-import PropTypes from 'prop-types';
-import { getItems } from '../../services/Services';
-import Swal from 'sweetalert';
-import "./CreateItem.scss";
+import { setCurrentComponent } from '../../redux/global/globalSlider'
+import { useForm } from "react-hook-form"
+import { createItem, getItems } from "../../services/Services"
+import { BiError } from "react-icons/bi"
+import PropTypes from 'prop-types'
+import Swal from 'sweetalert'
+import "./CreateItem.scss"
 
 export const CreateItem = ({items, setItems }) => {
   const dispatch = useDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState:{ errors }} = useForm();
 
   useEffect(() => {
    /*  setItems(items) */
     getItems("All").then((res) => {setItems(res.data)})
     .catch((error) => {  
-      console.log("Ocurrió un error al obtener los elementos:", error); 
+      console.log("Error getting items", error); 
     });
   }, []);
 
@@ -59,27 +54,26 @@ export const CreateItem = ({items, setItems }) => {
     }
   };
   
-
   return (
     <div className="create-item">
       <h1 className="create-item-title">Create Item</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <label className="form-label">Asign item code:</label>
-        <input className="form-input" type="number" {...register("itemCode", { required: true })} />
-        {errors.itemCode && <p className="form-error"> <BiError/> required, please enter a valid code</p>}
+      <form onSubmit={handleSubmit(onSubmit)} className="formulary">
+        <label className="formulary-tag">Asign item code:</label>
+        <input className="formulary-input" type="number" {...register("itemCode", { required: true })} />
+        {errors.itemCode && <p className="formulary-error"> <BiError/> Required, please enter a valid code</p>}
 
-        <label className="form-label">Item´s description: </label>
+        <label className="formulary-tag">Item´s description: </label>
         <input 
-          className="form-input"
+          className="formulary-input"
           type="text"
           {...register("description", { required: true, maxLength: 250 })}
         />
-        {errors.description && <p className="form-error"><BiError/> This field is required</p>}
+        {errors.description && <p className="formulary-error"><BiError/> This field is required</p>}
 
-        <label className="form-label">Add price:</label>
-        <input  className="form-input" type="text" {...register("price", { required: true, pattern: /^[0-9]+(\.[0-9]+)?$/ })} />
-        {errors.price && <p className="form-error"> <BiError/> Field required, please enter a valid number</p>}
-        <input className="form-submit" type="submit" />
+        <label className="formulary-tag">Add price:</label>
+        <input  className="formulary-input" type="text" {...register("price", { required: true, pattern: /^[0-9]+(\.[0-9]+)?$/ })} />
+        {errors.price && <p className="formulary-error"> <BiError/> Field required, please enter a valid number</p>}
+        <input className="formulary-submit" type="submit"  value='Create'/>
       </form>
     </div>
   );

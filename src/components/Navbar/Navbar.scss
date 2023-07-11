@@ -1,7 +1,7 @@
 @import '../../styles/vars'; 
 .navbar { 
     width: 300px; 
-    padding: $spacing-unit * 3; 
+    padding: 50px 24px;
    
     &-list { 
       list-style: none; 
@@ -10,17 +10,18 @@
     } 
    
     &-item { 
-      margin-bottom: 10px; 
-   
       &-btn { 
         width: 90%; 
         font-family: $font-family; 
-        font-size: $font-size-base; 
-        color: $color-background; 
-        background-color: $color-primary; 
-        border: none; 
+        background-color:  $color-primary;
+        color: white;
+        text-transform: uppercase;
         border-radius: $border-radius; 
-        padding: $spacing-unit; 
+        margin-top: $spacing-unit;
+        padding: 15px;
+        font-size: 15px;
+        font-weight: 100;
+        letter-spacing: 5px;
         cursor: pointer; 
         transition: background-color 0.3s; 
    
@@ -30,11 +31,7 @@
         } 
       } 
     }
-    @media (max-width: $breakpoint-mobile){
+/*     @media (max-width: $breakpoint-mobile){
       display: none;
-/*       justify-content: center;
-      list-style: none;
-      padding: 0px 6px;
-      margin: 0;  */
-  } 
+    } */
   }

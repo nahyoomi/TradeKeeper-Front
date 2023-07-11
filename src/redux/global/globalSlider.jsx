@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     currentComponent: 'dashboard',
-    token: '',
+    user: {},
   };
 
 const slice = createSlice({
@@ -12,13 +12,13 @@ const slice = createSlice({
       setCurrentComponent: (state, action) => {
         state.currentComponent = action.payload;
       },
-      setToken:(state, action) => {
-        state.token = action.payload;
+      setUser:(state, action) => {
+        state.user = action.payload;
       }
     },
 });
 
 
-export const { setCurrentComponent, setToken } = slice.actions;
+export const { setCurrentComponent, setUser } = slice.actions;
 export default slice.reducer;
 

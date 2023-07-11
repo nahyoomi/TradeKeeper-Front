@@ -1,24 +1,25 @@
 @import '../../styles/vars';
 
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 0 auto;
-    box-shadow:$box-shadow;
+.PDP-container {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  box-shadow: $box-shadow;
+}
 
+.card {
     &-header {
       display: flex;
-      align-items: center;
-      margin-bottom: 10px;
+      justify-content: space-between;
+      /* padding: $spacing-unit; */
 
       &-labels {
         font-size: 12px;
         font-weight: bold;
+        color: $color-primary;
+        font-size: 14px;
       }
     }
 
@@ -31,7 +32,7 @@
     }
 
     &-item-code {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     &-body {
@@ -45,8 +46,11 @@
     }
 
     &-title {
+      text-align: center;
       font-size: 18px;
       margin-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: $spacing-unit * 2;
     }
 
     &-description {
@@ -77,30 +81,51 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      margin-top: 16px;
+      margin-top: 70px;
     }
   }
   
+  .card-elections{
+    &-select {
+      font-weight: normal;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      color: $color-primary;
+      border: 1px solid $color-primary;
+      border-radius: 5px;
+    }
+  }
   .edit-button,
   .back-button, .deactivate-button {
     padding: 5px 10px;
-    background-color: #ccc;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    text-transform: uppercase;
   }
   .edit-button {
-    background-color: #2196f3;
+    background-color: #007BFF;
   }
   .deactivate-button {
-    background-color: #f44336;
+    background-color:  #DC3545;
+  }
+  .addReduction-button{
+    border: 1px solid $color-primary;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    color:$color-primary;
+    border-radius: 5px;
+    background-color:  #fff;
   }
   
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  @keyframes card-animation {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
   }
-
   
+  .PDP-container {
+    animation: card-animation 1s ease-out;
+  }
