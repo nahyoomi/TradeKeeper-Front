@@ -4,6 +4,7 @@ import { getSuppliers } from '../../services/Services'
 import { setCurrentComponent } from "../../redux/global/globalSlider"; */
 import './SuppliersOverview.scss'
 import CreateSupplierModal from '../CreateSupplierModal/CreateSupplierModal';
+import { HiOutlinePlus } from "react-icons/hi";
 
 const SuppliersOverview = () => {
 
@@ -14,7 +15,6 @@ const SuppliersOverview = () => {
   const handleButtonClick = () => {
     /* dispatch(setCurrentComponent('createSupplierModal')); */
     setShowModal(true);
-    console.log('entree', showModal);
   };
 
   useEffect(() => {
@@ -32,12 +32,7 @@ const SuppliersOverview = () => {
   return (
     <div className='suppliers-container'>
             <div className="header">
-        <div className="search-bar">
-          {/* Aquí puedes agregar tu lógica de búsqueda */}
-        </div>
-        <button className="create-button" onClick={handleButtonClick}>
-          New Supplier
-        </button>
+        <button className="create-button" onClick={handleButtonClick}><HiOutlinePlus/> New Supplier</button>
         {showModal && <CreateSupplierModal setShowModal={setShowModal} />}
       </div>
       <div className="supplier-list">
@@ -45,10 +40,6 @@ const SuppliersOverview = () => {
           <div key={supplier.supplierId} className="supplier-item">
             <span>{supplier.name}</span>
             <span>{supplier.country}</span>
-            <div className="buttons">
-              <button className="buttons-edit"/* onClick={() => handleEdit(supplier.id)} */>Edit</button>
-              <button className="buttons-remove"/* onClick={() => handleDelete(supplier.id)} */>Remove</button>
-            </div>
           </div>
         ))}
       </div>

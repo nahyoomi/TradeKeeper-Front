@@ -1,96 +1,101 @@
-@import "../../styles/vars";
+@import '../../styles/vars';
 
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: $color-background;
-}
-
-.welcome {
-  background-color: #fff;
-  width: 350px;
-  padding: $spacing-unit * 6;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
-  text-align: center;
-
-  &-subtitle {
-    font-family: $font-family;
-    font-size: 24px;
-    color: $color-primary;
-    margin-bottom: $spacing-unit * 2;
-  }
-}
-
-.form-group {
-  margin-bottom: $spacing-unit * 2;
-
-  &-label {
-    display: block;
-    font-family: $font-family;
-    font-size: $font-size-base;
-    color: $font-color;
-    margin-bottom: $spacing-unit;
-  }
-
-  &-input {
-    width: 100%;
-    padding: $spacing-unit;
-    border: 1px solid $color-primary;
-    border-radius: $border-radius;
-    font-family: $font-family;
-    font-size: $font-size-base;
-    color: $font-color;
-  }
-}
-
-.form-error {
+.login-container { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
+} 
+ 
+.welcome { 
+  background-color: #fff; 
+  width: 350px; 
+  padding: $spacing-unit * 6; 
+  border-radius: $border-radius; 
+  box-shadow: $box-shadow; 
+  text-align: center; 
+ 
+  &-subtitle { 
+    font-family: $font-family; 
+    font-size: 24px; 
+    color: $color-primary; 
+    margin-bottom: $spacing-unit * 2; 
+    letter-spacing: 10px;
+    text-transform: uppercase;
+  } 
+  @media (max-width: $breakpoint-mobile) { 
+    width: 250px; 
+  } 
+} 
+ 
+.form-group { 
+  margin-bottom: $spacing-unit * 2; 
+ 
+  &-label { 
+    display: block; 
+    font-family: $font-family; 
+    font-size: $font-size-base; 
+    color: $font-color; 
+    margin-bottom: $spacing-unit; 
+  } 
+ 
+  &-input { 
+    width: 100%; 
+    padding: $spacing-unit; 
+    border: 1px solid $color-primary; 
+    border-radius: $border-radius; 
+    font-family: $font-family; 
+    font-size: $font-size-base; 
+    color: $font-color; 
+  } 
+} 
+ 
+.form-error { 
   color: #bf1650;
-  ::before {
-    display: inline;
-  }
-}
-
-.login-button {
-  background-color: $color-primary;
-  color: white;
-  text-transform: uppercase;
-  border: none;
-  margin-top: $spacing-unit;
-  padding: $spacing-unit * 2;
-  font-size: $font-size-base;
-  font-weight: 100;
-  letter-spacing: 10px;
-  cursor: pointer;
+  margin-top: 0;
+  font-size: 12px; 
+  display: flex; 
+  align-items: center; 
+  ::before { 
+    display: inline; 
+  } 
+} 
+ 
+.login-button { 
+  background-color: $color-primary; 
+  color: white; 
+  text-transform: uppercase; 
+  border: none; 
+  margin-top: $spacing-unit * 2; 
+  padding: $spacing-unit * 2; 
+  font-size: $font-size-base; 
+  font-weight: 100; 
+  letter-spacing: 10px; 
+  cursor: pointer; 
   transition: background-color 0.3s;
+} 
 
-  &:hover {
-    background-color: $color-secondary;
-  }
-}
-
-.options {
-  margin-top: $spacing-unit * 2;
-  &-selection {
-    margin-bottom: $spacing-unit;
-  }
-}
-
-.back-btn {
-  margin-top: $spacing-unit;
-  padding: $spacing-unit * 2;
-  color: $color-primary;
-  font-family: $font-family;
-  font-size: $font-size-base;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    color: $color-secondary;
-  }
+.login-button:hover { 
+  color: $color-primary; 
+  background-color: #d9ecff; 
+} 
+ 
+.options { 
+  margin-top: $spacing-unit * 2; 
+  &-selection { 
+    margin-bottom: $spacing-unit; 
+  } 
+} 
+ 
+.back-btn { 
+  margin-top: $spacing-unit * 2; 
+  padding: $spacing-unit; 
+  color: $color-primary; 
+  font-family: $font-family; 
+  font-size: $font-size-base; 
+  font-weight: bold; 
+  border: none; 
+  cursor: pointer; 
+  background-color: #fff;
 }

@@ -5,144 +5,119 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  padding: 20px;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding: 20px;
+  }
 }
 
 .hero-section {
   text-align: center;
   margin-bottom: 50px;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    margin-bottom: 30px;
+  }
 }
+
 .title {
   font-size: 40px;
   color: $color-primary;
   margin-bottom: 20px;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    font-size: 30px;
+  }
 }
+
 .description {
   font-size: 20px;
   color: $color-text;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    font-size: 18px;
+  }
 }
+
 .sign-in-button {
   background-color: $color-primary;
-  color: white;
+  color: $color-background;
+  text-transform: uppercase;
   border: none;
   padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 5px;
+  font-size: 16px;
   margin-top: 30px;
+  letter-spacing: 5px;
   cursor: pointer;
+
+  background-color: $color-primary;
+  color: $color-background;
+  text-transform: uppercase;
+  border: none;
+  margin-top: $spacing-unit * 2;
+  padding: $spacing-unit * 2;
+  font-size: $spacing-unit * 2;
+  font-weight: 100;
+  letter-spacing: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
+
+.sign-in-button:hover{ 
+  color: $color-primary; 
+  background-color: #d9ecff; 
+} 
+
 
 .features-section {
   display: flex;
   justify-content: space-around;
   margin-bottom: 50px;
+
+  @media screen and (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+  }
 }
 
 .feature {
   text-align: center;
+  border: 1px solid $color-primary;
+  border-radius: $spacing-unit * 2;
+  box-shadow: $box-shadow;
+  padding: $spacing-unit * 2;
+  margin: $spacing-unit * 2;
 
   &-image {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     margin-bottom: 20px;
+    border-radius: $border-radius * 4;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 200px;
+      height: 200px;
+    }
   }
 
   &-title {
     font-size: 24px;
     color: $color-primary;
     margin-bottom: 10px;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: 20px;
+    }
   }
 
   &-description {
     font-size: 16px;
-    color: $color-text;
+    color: $color-primary;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: 14px;
+    }
   }
 }
 
-.interactive-section {
-  text-align: center;
-}
-.interactive-title {
-  font-size: 24px;
-  color: $color-primary;
-  margin-bottom: 20px;
-}
-.contact-form {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.input-field {
-  padding: 10px;
-  margin-right: 10px;
-  border-radius: 5px;
-  border: 1px solid $color-text;
-  font-size: 16px;
-}
-
-.contact-button {
-  background-color: $color-primary;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Media queries  */
-@media screen and (max-width: 768px) {
-  .landing-container {
-    padding: 20px;
-  }
-  
-  .hero-section {
-    margin-bottom: 30px;
-  }
-  
-  .title {
-    font-size: 30px;
-  }
-  
-  .description {
-    font-size: 18px;
-  }
-  
-  .features-section {
-    flex-direction: column;
-  }
-  
-  .feature {
-    margin-bottom: 30px;
-  }
-  
-  .feature-image {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .feature-title {
-    font-size: 20px;
-  }
-  
-  .feature-description {
-    font-size: 14px;
-  }
-  
-  .interactive-section {
-    margin-bottom: 30px;
-  }
-  
-  .interactive-title {
-    font-size: 20px;
-  }
-  
-  .contact-form {
-    flex-direction: column;
-  }
-  
-  .input-field {
-    margin-bottom: 10px;
-  }
-}

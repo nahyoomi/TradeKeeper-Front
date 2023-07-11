@@ -2,12 +2,23 @@
 
 .heading{
     background-color:$color-primary;
-    /* width: calc(100% - 200px); */
+    width: 100%;
     height: 40px;
     border-radius: $border-radius;
     font-size: 24px;
-    margin-left: 200px;
     font-family: $font-family;
     color: #ffffff;
+    
+    &-content{
+        &-route {
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            padding: 4px;
+            padding: 4px;
+            margin-left: 16px;
+            display: flex;
+            align-items: center;
+        }
+    }
 
 }

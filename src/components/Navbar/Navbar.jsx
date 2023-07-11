@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import { setCurrentComponent } from "../../redux/global/globalSlider";
 import "./Navbar.scss";
-import { HiOutlineViewGridAdd, HiArchive, HiPencilAlt, HiUsers, HiColorSwatch } from "react-icons/hi";
+import { HiOutlineViewGridAdd, HiArchive, HiPencilAlt, HiUsers} from "react-icons/hi";
+/* import MobileNavbar from "../MobileNavbar/MobileNavbar"; */
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -43,14 +44,6 @@ const Navbar = () => {
             onClick={() => handleButtonClick("suppliers")}
           >
            <HiUsers/> Suppliers
-          </button>
-        </li>
-        <li className="navbaritem">
-          <button
-            className="navbar-item-btn"
-            onClick={() => handleButtonClick("priceReductions")}
-          >
-           <HiColorSwatch/> Price Reductions
           </button>
         </li>
       </ul>
