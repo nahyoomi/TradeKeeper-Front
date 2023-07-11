@@ -1,12 +1,11 @@
 
-import { useForm } from "react-hook-form"; 
-import PropTypes from "prop-types";
-import { addReduction } from "../../services/Services";
-
+import { useForm } from "react-hook-form"
+import PropTypes from "prop-types"
+import { addReduction } from "../../services/Services"
+import './AddPriceReductionModal.scss'
 /* import { BiError } from "react-icons/bi"; */
 
-import './AssignSupplierModal.scss'
-export const AssignSupplierModal = ({item, setShowModalReduction}) => {
+export const AddPriceReductionModal = ({item, setShowModalReduction}) => {
   const { register, handleSubmit/* , formState: { errors } */ } = useForm(); 
 
   const onSubmit = (data) => { 
@@ -63,7 +62,7 @@ export const AssignSupplierModal = ({item, setShowModalReduction}) => {
 }
 
 
-AssignSupplierModal.propTypes = {
+AddPriceReductionModal.propTypes = {
   item: PropTypes.any.isRequired,
   setShowModalReduction: PropTypes.any.isRequired,
 };

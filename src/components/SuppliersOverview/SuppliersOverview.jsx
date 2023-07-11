@@ -4,6 +4,7 @@ import { getSuppliers } from '../../services/Services'
 import { setCurrentComponent } from "../../redux/global/globalSlider"; */
 import './SuppliersOverview.scss'
 import CreateSupplierModal from '../CreateSupplierModal/CreateSupplierModal';
+import { HiOutlinePlus } from "react-icons/hi";
 
 const SuppliersOverview = () => {
 
@@ -31,9 +32,7 @@ const SuppliersOverview = () => {
   return (
     <div className='suppliers-container'>
             <div className="header">
-        <button className="create-button" onClick={handleButtonClick}>
-          New Supplier
-        </button>
+        <button className="create-button" onClick={handleButtonClick}><HiOutlinePlus/> New Supplier</button>
         {showModal && <CreateSupplierModal setShowModal={setShowModal} />}
       </div>
       <div className="supplier-list">

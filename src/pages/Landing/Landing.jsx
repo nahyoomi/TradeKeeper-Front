@@ -1,8 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import SimplifiedManagement from '../../assets/Images/SimplifiedManagement.png';
-import FullReports from '../../assets/Images/FullReports.png';
-import CustomAlerts from '../../assets/Images/CustomAlerts.png';
-import './Landing.scss';
+import { useNavigate } from 'react-router-dom'
+import SimplifiedManagement from '../../assets/Images/SimplifiedManagement.png'
+import FullReports from '../../assets/Images/FullReports.png'
+import CustomAlerts from '../../assets/Images/CustomAlerts.png'
+import './Landing.scss'
 
 const Landing = () => {
   const navigate = useNavigate();

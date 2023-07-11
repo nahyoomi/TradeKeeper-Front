@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 20px;
 
   @media screen and (max-width: $breakpoint-tablet) {
@@ -43,7 +43,7 @@
 
 .sign-in-button {
   background-color: $color-primary;
-  color: white;
+  color: $color-background;
   text-transform: uppercase;
   border: none;
   padding: 10px 20px;
@@ -51,7 +51,25 @@
   margin-top: 30px;
   letter-spacing: 5px;
   cursor: pointer;
+
+  background-color: $color-primary;
+  color: $color-background;
+  text-transform: uppercase;
+  border: none;
+  margin-top: $spacing-unit * 2;
+  padding: $spacing-unit * 2;
+  font-size: $spacing-unit * 2;
+  font-weight: 100;
+  letter-spacing: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
+
+.sign-in-button:hover{ 
+  color: $color-primary; 
+  background-color: #d9ecff; 
+} 
+
 
 .features-section {
   display: flex;
@@ -65,11 +83,17 @@
 
 .feature {
   text-align: center;
+  border: 1px solid $color-primary;
+  border-radius: $spacing-unit * 2;
+  box-shadow: $box-shadow;
+  padding: $spacing-unit * 2;
+  margin: $spacing-unit * 2;
 
   &-image {
     width: 250px;
     height: 250px;
     margin-bottom: 20px;
+    border-radius: $border-radius * 4;
 
     @media screen and (max-width: $breakpoint-tablet) {
       width: 200px;
@@ -89,10 +113,11 @@
 
   &-description {
     font-size: 16px;
-    color: $color-text;
+    color: $color-primary;
 
     @media screen and (max-width: $breakpoint-tablet) {
       font-size: 14px;
     }
   }
 }
+

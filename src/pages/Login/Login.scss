@@ -21,6 +21,8 @@
     font-size: 24px; 
     color: $color-primary; 
     margin-bottom: $spacing-unit * 2; 
+    letter-spacing: 10px;
+    text-transform: uppercase;
   } 
   @media (max-width: $breakpoint-mobile) { 
     width: 250px; 
@@ -50,7 +52,9 @@
 } 
  
 .form-error { 
-  color: #bf1650; 
+  color: #bf1650;
+  margin-top: 0;
+  font-size: 12px; 
   display: flex; 
   align-items: center; 
   ::before { 
@@ -69,11 +73,12 @@
   font-weight: 100; 
   letter-spacing: 10px; 
   cursor: pointer; 
-  transition: background-color 0.3s; 
- 
-  &:hover { 
-    background-color: $color-secondary; 
-  } 
+  transition: background-color 0.3s;
+} 
+
+.login-button:hover { 
+  color: $color-primary; 
+  background-color: #d9ecff; 
 } 
  
 .options { 
@@ -92,9 +97,5 @@
   font-weight: bold; 
   border: none; 
   cursor: pointer; 
-  transition: background-color 0.3s; 
- 
-  &:hover { 
-    color: $color-secondary; 
-  } 
+  background-color: #fff;
 }
