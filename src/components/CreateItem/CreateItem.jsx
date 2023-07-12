@@ -22,10 +22,8 @@ export const CreateItem = ({items, setItems }) => {
   }, []);
 
   const onSubmit = (data) => {
-    console.log(data.itemCode, 'data.itemCode');
-    console.log(items, '----items');
     const foundItem = items.find(item => item.itemCode ===  parseInt(data.itemCode));
-    console.log(foundItem, 'estre es el foundItem');
+  
     if (foundItem) {
       console.log("El itemCode ya está en la base de datos");
       Swal({

@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import Header from '../Header/Header'
-import Navbar from '../Navbar/Navbar';
-import './Layout.scss'; 
+import Navbar from '../Navbar/Navbar'
+import './Layout.scss'
 
 export const Layout = ({children, currentComponent}) => {
   Layout.propTypes = {

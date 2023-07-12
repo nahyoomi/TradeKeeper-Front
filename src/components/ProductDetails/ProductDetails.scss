@@ -1,7 +1,7 @@
 @import '../../styles/vars';
 
 .PDP-container {
-  width: 100%;
+  width: 55%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -13,13 +13,16 @@
     &-header {
       display: flex;
       justify-content: space-between;
-      /* padding: $spacing-unit; */
-
+      
       &-labels {
         font-size: 12px;
         font-weight: bold;
         color: $color-primary;
         font-size: 14px;
+      }
+
+      &-reductions {
+        display: contents;
       }
     }
 
@@ -70,7 +73,6 @@
     }
 
     &-state {
-      background-color: lightgreen;
       width: 35px;
       border-radius: 8px;
       padding: 4px;
@@ -78,10 +80,8 @@
     }
 
     &-buttons {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      margin-top: 70px;
+      display: inline-block;
+      text-align: end;
     }
   }
   
@@ -119,6 +119,7 @@
     color:$color-primary;
     border-radius: 5px;
     background-color:  #fff;
+    margin: 0;
   }
   
   @keyframes card-animation {
