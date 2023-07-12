@@ -20,8 +20,7 @@ const SuppliersOverview = () => {
   useEffect(() => {
     getSuppliers().then((res) => {setSuppliers(res.data)})
     .catch((error) => { 
-      // Manejo de errores 
-      console.log("Ocurrió un error al obtener los elementos:", error); 
+      console.log("There was an error obtaining data", error); 
     });
   }, [showModal]);
 

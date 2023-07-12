@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { setCurrentComponent } from "../../redux/global/globalSlider";
-import { HiArchive, HiMinusCircle, HiUsers, HiColorSwatch } from "react-icons/hi";
-import './Dashboard.scss';
+import { useState } from 'react'
+import { useDispatch } from "react-redux"
+import { setCurrentComponent } from "../../redux/global/globalSlider"
+import { HiArchive, HiMinusCircle, HiUsers, HiColorSwatch } from "react-icons/hi"
+import './Dashboard.scss'
 
 const Dashboard = () => {
   const [darkMode, setDarkMode] = useState(false);

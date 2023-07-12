@@ -1,3 +1,5 @@
+@import '../../styles/vars';
+
 .login-reduction {
     position: fixed;
     top: 0;
@@ -8,4 +10,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &-modal {
+        background-color: #fff; 
+        width: 350px; 
+        padding: $spacing-unit * 6; 
+        border-radius: $border-radius; 
+        box-shadow: $box-shadow; 
+        text-align: center; 
+    }
+
+    .modal-onclose{
+        color: $color-primary;
+        background-color: #fff;
+        font-size: 24px;
+    }
+
 }

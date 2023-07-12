@@ -1,6 +1,6 @@
 import './Header.scss'
-import PropTypes from 'prop-types';
-import { HiChevronRight } from "react-icons/hi";
+import PropTypes from 'prop-types'
+import { HiChevronRight } from "react-icons/hi"
 
 const Header = ({ currentComponent }) => {
   const currentPath = `/${currentComponent}`;

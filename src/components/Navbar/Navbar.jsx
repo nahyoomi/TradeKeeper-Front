@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
-import { setCurrentComponent } from "../../redux/global/globalSlider";
-import "./Navbar.scss";
-import { HiOutlineViewGridAdd, HiArchive, HiPencilAlt, HiUsers} from "react-icons/hi";
+import { useDispatch } from "react-redux"
+import { setCurrentComponent } from "../../redux/global/globalSlider"
+import "./Navbar.scss"
+import { HiOutlineViewGridAdd, HiArchive, HiPencilAlt, HiUsers} from "react-icons/hi"
 /* import MobileNavbar from "../MobileNavbar/MobileNavbar"; */
 
 const Navbar = () => {

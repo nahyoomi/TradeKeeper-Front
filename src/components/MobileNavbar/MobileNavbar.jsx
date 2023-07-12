@@ -1,8 +1,8 @@
 
-import { useState } from 'react';
-import Drawer from 'react-modern-drawer';
-import { HiMenu/* , HiX  */} from "react-icons/hi";
-import './MobileNavbar.scss';
+import { useState } from 'react'
+import Drawer from 'react-modern-drawer'
+import { HiMenu/* , HiX  */} from "react-icons/hi"
+import './MobileNavbar.scss'
 
 
 const MobileNavbar = () => {

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { getItems } from "../../services/Services";
-import { useDispatch } from "react-redux";
-import { setCurrentComponent } from "../../redux/global/globalSlider";
-import { HiOutlinePlus } from "react-icons/hi";
-import PropTypes from "prop-types";
-import "./ItemsOverview.scss";
+import { useEffect, useState } from "react"
+import { getItems } from "../../services/Services"
+import { useDispatch } from "react-redux"
+import { setCurrentComponent } from "../../redux/global/globalSlider"
+import { HiOutlinePlus } from "react-icons/hi"
+import PropTypes from "prop-types"
+import "./ItemsOverview.scss"
 
 const ItemsOverview = ({ setSelectedItemCode, items, setItems }) => {
   const [filter, setFilter] = useState("All");
@@ -22,12 +22,12 @@ const ItemsOverview = ({ setSelectedItemCode, items, setItems }) => {
         setItems(res.data);
       })
       .catch((error) => {
-        console.log("Ocurrió un error al obtener los elementos:", error);
+        console.log("There was an error obtaining data", error);
       });
   }, [filter]);
 
   useEffect(() => {
-    console.log("filter", filter);
+
   }, [filter]);
 
   const handleButtonClick = () => {
