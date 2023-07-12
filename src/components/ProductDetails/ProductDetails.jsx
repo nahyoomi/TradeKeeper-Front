@@ -9,16 +9,16 @@ import PropTypes from "prop-types"
 import Swal from "sweetalert"
 import { BiError } from "react-icons/bi"
 import "./ProductDetails.scss"
-/* import { isHtmlElement } from "react-router-dom/dist/dom" */
+
 
 const ProductDetails = ({ itemCode }) => {
-  const [showModalReduction, setShowModalReduction] = useState(false);
   const dispatch = useDispatch();
+  const [showModalReduction, setShowModalReduction] = useState(false);
   const [changeStateItem, setChangeStateItem] = useState();
   const [item, setItem] = useState(null);
   const [suppliers, setSuppliers] = useState([]);
-  /* const [selectedSupplier, setSelectedSupplier] = useState(""); */
   const [isEditing, setIsEditing] = useState("Edit");
+
   const {
     register,
     handleSubmit,
@@ -38,8 +38,7 @@ const ProductDetails = ({ itemCode }) => {
         setSuppliers(res.data);
       })
       .catch((error) => {
-        // Manejo de errores
-        console.log("Ocurrió un error al obtener los elementos:", error);
+        console.log("There was an error obtaining data", error);
       });
   }, [changeStateItem, item]);
 
@@ -74,7 +73,7 @@ const ProductDetails = ({ itemCode }) => {
             dispatch(setCurrentComponent("items"));
           })
           .catch((error) => {
-            console.log("no se ha enviado el item ", error);
+            console.log("Item has not been sent", error);
             Swal({
               title: "Something went wrong, try again",
               icon: "error",
@@ -97,7 +96,6 @@ const ProductDetails = ({ itemCode }) => {
     };
     console.log("newData", newData);
     updateSupplier(newData).then((response) => {
-      console.log("response", response);
       if(response.status == 200){
         Swal({
           title: "Item has been Add",
@@ -121,7 +119,6 @@ const ProductDetails = ({ itemCode }) => {
   };
 
   const onSubmit = async (data) => {
-    console.log("data",data);
     if (!data.creationDate || !data.description || !data.price) {
       console.log("All fields must be completed in any other case default results");
       return;
@@ -136,12 +133,9 @@ const ProductDetails = ({ itemCode }) => {
       suppliers: [...item.suppliers],
     };
   
-    console.log(itemUpdated, "Fields updated");
-  
     try {
       const res = await updateItem(itemUpdated);
       setItem(res.data);
-      console.log(res);
     } catch (error) {
       console.log("Nothing was updated", error);
     }
@@ -230,7 +224,7 @@ const ProductDetails = ({ itemCode }) => {
             <label className="card-header-labels">Created by</label>
             <div className="card-created-by">{item.userId}</div>
 
-            <label className="card-header-labels">suppliers:</label>
+            <label className="card-header-labels">Suppliers:</label>
             {item.suppliers.map((suppliers) => {
               return (
                 <div key={suppliers.item_supplierId}>
@@ -243,11 +237,11 @@ const ProductDetails = ({ itemCode }) => {
             {console.log("item",item.priceReductions)}
             {item.priceReductions.map((reduction) => {
               return (
-                <div key={reduction.priceReductionId}>
+                <div className="card-header-reductions" key={reduction.priceReductionId}>
                   <span><strong>Id: </strong>{reduction.priceReductionId}</span>
                   <span><strong>Price: </strong>{reduction.reducedPrice}</span>
-                  <span><strong>start Date: </strong>{DateTime.fromISO(reduction.startDate).toFormat("dd/MM/yyyy")}</span>
-                  <span><strong>endDate: </strong>{DateTime.fromISO(reduction.endDate).toFormat("dd/MM/yyyy")}</span>
+                  <span><strong>Start Date: </strong>{DateTime.fromISO(reduction.startDate).toFormat("dd/MM/yyyy")}</span>
+                  <span><strong>End Date: </strong>{DateTime.fromISO(reduction.endDate).toFormat("dd/MM/yyyy")}</span>
                 </div>
               );
             })}
@@ -271,11 +265,7 @@ const ProductDetails = ({ itemCode }) => {
           </button>
         </div>
       </form>
-      <button className="addReduction-button"
-        /* className="deactivate-button" */ onClick={() =>
-          setShowModalReduction(true)
-        }
-      >
+      <button className="addReduction-button" onClick={() => setShowModalReduction(true)}>
         Add Reduction
       </button>
       {showModalReduction && (

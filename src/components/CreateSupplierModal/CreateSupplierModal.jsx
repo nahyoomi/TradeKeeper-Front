@@ -1,7 +1,8 @@
  import './CreateSupplierModal.scss'
- import PropTypes from 'prop-types';
- import { useForm } from 'react-hook-form';
+ import PropTypes from 'prop-types'
+ import { useForm } from 'react-hook-form'
  import { createSupplier } from '../../services/Services'
+ import { BiError } from "react-icons/bi"
 
 const CreateSupplierModal = ({ setShowModal }) => {
 
@@ -37,7 +38,7 @@ const CreateSupplierModal = ({ setShowModal }) => {
               /* name="name" */
               {...register("name", { required: true })}
             />
-            {errors.name && <span>Field is required</span>}
+            {errors.name && <span className='modal-span'><BiError/> Field is required</span>}
           </div>
           <div>
             <label>Country:</label>
@@ -46,7 +47,7 @@ const CreateSupplierModal = ({ setShowModal }) => {
               /* name="country" */
               {...register("country",{ required: true })}
             />
-            {errors.country && <span>Field is required</span>}
+            {errors.country && <span className='modal-span'><BiError/> Field is required</span>}
           </div>
           <div className="modal-footer">
             <button type="button" onClick={()=> setShowModal(false) }>
